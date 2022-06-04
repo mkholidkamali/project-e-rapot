@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('nis');
-            $table->unsignedBigInteger('id_mapel');
-            $table->integer('skor');
 
-            $table->foreign('nis')->references('id')->on('siswa');
-            $table->foreign('id_mapel')->references('id')->on('mapel');
-            
+            $table->unsignedBigInteger('mapel_id');
+            $table->unsignedBigInteger('siswa_id');
+            $table->unsignedBigInteger('rapot_id');
+            $table->foreign('mapel_id')->references('id')->on('mapel');
+            $table->foreign('siswa_id')->references('id')->on('siswa');
+            $table->foreign('rapot_id')->references('id')->on('rapot');
+
+            $table->integer('nilai');
+            $table->integer('kkm');
             $table->timestamps();
             
         });

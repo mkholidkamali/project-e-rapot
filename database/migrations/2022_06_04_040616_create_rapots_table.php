@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mapel', function (Blueprint $table) {
+        Schema::create('rapots', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_mapel');
+
+            $table->enum('semester', ['ganjil', 'genap']);
+            $table->enum('kelas', ['x', 'xi', 'xii']);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('rapots');
     }
 };
