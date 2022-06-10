@@ -56,7 +56,7 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.kelas.edit');
     }
 
     /**

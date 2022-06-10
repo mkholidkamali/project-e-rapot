@@ -37,7 +37,10 @@ Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.cre
 Route::get('/siswa/{id}/show', [SiswaController::class, 'show'])->name('siswa.show');
 Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
 
+// KELAS
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
+Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
+
 Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
 Route::get('/nilai', function() {
     return view('dashboard.nilai.index');

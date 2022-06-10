@@ -117,28 +117,7 @@
                                     <td>XII Tel 14</td>
                                     <td>Cahyano</td>
                                     <td class="text-center">
-                                        <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>XII Tel 14</td>
-                                    <td>Anthonio</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>XII Tel 15</td>
-                                    <td>Brodi</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                        <a class="btn btn-warning" href="{{ route('kelas.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
                                         <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                     </td>
                                 </tr>
