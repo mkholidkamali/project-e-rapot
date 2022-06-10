@@ -56,7 +56,7 @@ class MapelController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("dashboard.mapel.edit");
     }
 
     /**

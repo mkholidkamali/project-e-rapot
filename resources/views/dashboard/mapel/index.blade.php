@@ -67,28 +67,7 @@
                                             <td>MTK</td>
                                             <td>X</td>
                                             <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Bahasa Indonesia</td>
-                                            <td>X</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Pemrograman Web</td>
-                                            <td>X</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                                <a class="btn btn-warning" href="{{ route('mapel.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
                                                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                             </td>
                                         </tr>
@@ -119,28 +98,7 @@
                                             <td>MTK</td>
                                             <td>XI</td>
                                             <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Bahasa Indonesia</td>
-                                            <td>XI</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Pemrograman Web</td>
-                                            <td>XI</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                                <a class="btn btn-warning" href="{{ route('mapel.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
                                                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                             </td>
                                         </tr>
@@ -171,28 +129,7 @@
                                             <td>MTK</td>
                                             <td>XII</td>
                                             <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Bahasa Indonesia</td>
-                                            <td>XII</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Pemrograman Web</td>
-                                            <td>XII</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                                <a class="btn btn-warning" href="{{ route('mapel.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
                                                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                             </td>
                                         </tr>
