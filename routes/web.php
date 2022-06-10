@@ -24,7 +24,14 @@ Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/guru', [GuruController::class, 'index']);
+
+// GURU
+Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
+Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
+Route::get('/guru/{id}/show', [GuruController::class, 'show'])->name('guru.show');
+Route::get('/guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
+
+
 Route::get('/siswa', [SiswaController::class, 'index']);
 Route::get('/kelas', [KelasController::class, 'index']);
 Route::get('/mapel', [MapelController::class, 'index']);

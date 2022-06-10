@@ -23,7 +23,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.guru.create');
     }
 
     /**
@@ -43,9 +43,9 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) 
     {
-        //
+        return view('dashboard.guru.show');
     }
 
     /**
@@ -56,7 +56,7 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.guru.edit');
     }
 
     /**
