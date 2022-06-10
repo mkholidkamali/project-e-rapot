@@ -31,10 +31,14 @@ Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create
 Route::get('/guru/{id}/show', [GuruController::class, 'show'])->name('guru.show');
 Route::get('/guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
 
+// SISWA
+Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+Route::get('/siswa/{id}/show', [SiswaController::class, 'show'])->name('siswa.show');
+Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
 
-Route::get('/siswa', [SiswaController::class, 'index']);
-Route::get('/kelas', [KelasController::class, 'index']);
-Route::get('/mapel', [MapelController::class, 'index']);
+Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
+Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
 Route::get('/nilai', function() {
     return view('dashboard.nilai.index');
 });

@@ -23,7 +23,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.siswa.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('dashboard.siswa.show');
     }
 
     /**
@@ -56,7 +56,7 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.siswa.edit');
     }
 
     /**

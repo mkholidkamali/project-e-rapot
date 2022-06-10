@@ -14,12 +14,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/guru">
+                <a class="nav-link text-white" href="{{ route('guru.index') }}">
                     Guru
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/siswa">
+                <a class="nav-link text-white" href="{{ route('siswa.index') }}">
                     Siswa
                 </a>
                 <hr class="text-white">
@@ -28,12 +28,12 @@
                 <h5 class="text-white ps-3">Akademik</h5>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/kelas">
+                <a class="nav-link text-white" href="{{ route('kelas.index') }}">
                     Kelas
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/mapel">
+                <a class="nav-link text-white" href="{{ route('mapel.index') }}">
                     Matpel
                 </a>
             </li>

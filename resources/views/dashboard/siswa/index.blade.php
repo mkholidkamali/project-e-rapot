@@ -6,7 +6,7 @@
     <h1 class="mt-3">Siswa</h1>
     <hr>
 
-    <button class="btn btn-success">Tambah Siswa</button>
+    <a class="btn btn-success" href="{{ route('siswa.create') }}">Tambah Siswa</a>
 
     <div class="card mt-2">
         <div class="card-body">
@@ -47,8 +47,8 @@
                                 <img src="storage/profile/guru/profile.webp" class="" width="50px">
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                <a class="btn btn-primary" href="{{ route('siswa.show', 1) }}"><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-warning" href="{{ route('siswa.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
                                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                             </td>
                         </tr>
