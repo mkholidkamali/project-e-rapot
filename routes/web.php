@@ -3,6 +3,7 @@
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,8 @@ Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.ed
 Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
 Route::get('/mapel/{id}/edit', [MapelController::class, 'edit'])->name('mapel.edit');
 
-Route::get('/nilai', function() {
-    return view('dashboard.nilai.index');
-});
+// NILAI
+Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');
+Route::get('/nilai/create', [NilaiController::class, 'create'])->name('nilai.create');
+Route::get('/nilai/{id}/show', [NilaiController::class, 'show'])->name('nilai.show');
+Route::get('/nilai/{id}/edit', [NilaiController::class, 'edit'])->name('nilai.edit');

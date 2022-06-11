@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/nilai">
+                <a class="nav-link text-white" href="{{ route('nilai.index') }}">
                     Nilai
                 </a>
             </li>

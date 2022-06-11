@@ -33,6 +33,15 @@
                 </form>
             </div>
 
+            <div class="d-flex justify-content-end">
+                <div class="d-flex align-items-center me-3">
+                    <a class="btn btn-success" href="{{ route('nilai.create') }}">Tambah Nilai</a>
+                </div>
+                <form action="" method="POST">
+                    <label for="search">Search</label>
+                    <input type="text" name="search" class="form-control">
+                </form>
+            </div>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered">
                     <thead>
@@ -61,8 +70,8 @@
                             <td>95</td>
                             <td>A</td>
                             <td class="text-center">
-                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
-                                <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                <a class="btn btn-primary" href="{{ route('nilai.show', 1) }}"><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-warning" href="{{ route('nilai.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
                                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                             </td>
                         </tr>
