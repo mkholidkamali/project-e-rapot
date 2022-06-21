@@ -13,12 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mapel', function (Blueprint $table) {
-            $table->id();
-            
-            $table->string('mapel');
-            $table->timestamps();
-        });
+
+        schema::create('raport',function(Blueprint $table) {
+
+        $table->id();
+
+        $table->enum('semester',['ganjil','genap']);
+        $table->enum('kelas',['x','xi','xii']);
+        $table->timestamps();
+         
+    
+    });
+        
     }
 
     /**

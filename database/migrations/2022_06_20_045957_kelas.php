@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gurus', function (Blueprint $table) {
-            $table->id();
-            $table->primary('no_induk');
+
+        schema::create('kelas',function(Blueprint $table) {
             
-            $table->string('name');
-            $table->enum('jenis_kelamin', ['l', 'p']);
-            $table->string('foto');
-            $table->timestamps();
-        });
+        $table->id();
+
+        $table->string('kelas',6);
+        $table->timestamps();
+    
+    });
+        
     }
 
     /**
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gurus');
+        //
     }
 };
