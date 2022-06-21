@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GuruController extends Controller
 {
@@ -13,7 +14,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('dashboard.guru.index');
+        $guru =  DB::table('guru')->get();
+        	return view('dashboard.guru.index',['guru' => $guru]);
     }
 
     /**
@@ -23,6 +25,7 @@ class GuruController extends Controller
      */
     public function create()
     {
+
         return view('dashboard.guru.create');
     }
 
@@ -34,7 +37,13 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('guru')->insert([
+            'no_induk' => $request->no_induk,
+            'nama_guru' => $request->nama_guru
+           
+        ]);
+
+        return redirect('/guru');
     }
 
     /**
@@ -45,7 +54,9 @@ class GuruController extends Controller
      */
     public function show($id) 
     {
-        return view('dashboard.guru.show');
+        $guru =  DB::table('guru')->where('id',$id)->get();
+        	return view('dashboard.guru.show',['guru' => $guru]);
+        
     }
 
     /**
@@ -56,7 +67,10 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.guru.edit');
+        
+	$guru = DB::table('guru')->where('id',$id)->get();
+	    return view('dashboard.guru.edit',['guru' => $guru]);
+
     }
 
     /**
@@ -66,10 +80,20 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,)
     {
-        //
+      
+        DB::table('guru')->where('id',$request->id)->update([
+           
+            'no_induk' => $request->no_induk,
+            'nama_guru' => $request->nama_guru
+            
+        ]);
+        
+        return redirect('/guru');
+        
     }
+
 
     /**
      * Remove the specified resource from storage.

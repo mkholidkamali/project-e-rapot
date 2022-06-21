@@ -8,31 +8,24 @@
 
     <a class="btn btn-primary mb-2 px-3" href="{{ route('guru.index') }}">Back</a>
 
+    
+
     <div class="card col-md-6">
         <div class="card-body">
-            <form action="" method="post" class="">
+            <form action="/guru/store" method="post" >
+            {{ csrf_field() }}
                 <div class="mb-2">
-                    <label for="no_induk" class="form-label">No Induk</label>
+                    <label for="no_induk" class="form-label">No Induk Guru </label>
                     <input type="text" class="form-control" name="no_induk" id="no_induk">
                 </div>
                 <div class="mb-2">
-                    <label for="nama" class="form-label">Nama Guru</label>
-                    <input type="text" class="form-control" name="nama" id="nama">
+                    <label for="nama_guru" class="form-label">Nama Guru</label>
+                    <input type="text" class="form-control" name="nama_guru" id="nama">
                 </div>
-                <div class="mb-2">
-                    <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <select class="form-select" aria-label="Default select example" name="jenis_kelamin" id="jenis_kelamin">
-                        <option value="l">Laki-laki</option>
-                        <option value="p">Perempuan</option>
-                    </select>
-                </div>
-                <div class="mb-2">
-                    <label for="foto" class="form-label">Foto</label>
-                    <input type="file" class="form-control" name="foto" id="foto">
-                </div>
+               
                 <button class="btn btn-success mt-2">Tambah Guru</button>
             </form>
         </div>
     </div>
 
-@endsection
+    @endsection

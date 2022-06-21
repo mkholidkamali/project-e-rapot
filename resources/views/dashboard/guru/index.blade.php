@@ -44,6 +44,23 @@
                                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                             </td>
                         </tr>
+                        @foreach($guru as $g)
+	                	<tr>
+			                <td>{{ $g->no_induk }}</td>
+			                <td>{{ $g->nama_guru }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+			                
+			                <td>
+                            <a class="btn btn-primary" href="{{ route('guru.show', $g->id) }}"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-warning" href="{{ route('guru.edit', $g->id) }}"><i class="bi bi-pencil-square"></i></a>
+				            <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>   
+				
+				                
+			                </td>
+		                </tr>
+		                @endforeach
                     </tbody>
                 </table>
             </div>
