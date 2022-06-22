@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {
+        Schema::create('siswas', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('kelas_id');
             $table->foreign('kelas_id')->references('id')->on('kelas');
 
-            $table->primary('nis', 10);
+            $table->string('nis', 10);
             $table->string('nisn', 12);
             $table->string('nama');
             $table->enum('jurusan', ['tr', 'tja', 'tkj', 'rpl']);

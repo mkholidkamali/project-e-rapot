@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nilai', function (Blueprint $table) {
+        Schema::create('nilais', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('mapel_id');

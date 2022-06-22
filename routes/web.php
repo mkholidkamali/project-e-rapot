@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', function () {
     return view('index');
@@ -44,7 +44,10 @@ Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.ed
 
 // MAPEL
 Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
+Route::post('/mapel', [MapelController::class, 'store'])->name('mapel.store');
 Route::get('/mapel/{id}/edit', [MapelController::class, 'edit'])->name('mapel.edit');
+Route::put('/mapel/{id}/update', [MapelController::class, 'update'])->name('mapel.update');
+Route::delete('/mapel/{id}/delete', [MapelController::class, 'destroy'])->name('mapel.destroy');
 
 // NILAI
 Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');

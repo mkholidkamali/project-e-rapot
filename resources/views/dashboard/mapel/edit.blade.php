@@ -10,20 +10,25 @@
 
     <div class="card col-md-6">
         <div class="card-body">
-            <form action="" method="post" class="mt-2 px-2">
+            <form action="{{ route('mapel.update', $mapel->id) }}" method="post" class="mt-2 px-2">
+                @csrf
+                @method('PUT')
                 <div class="mb-2">
-                    <label for="mata-pelajaran" class="form-label">Mata Pelajaran</label>
-                    <input type="text" name="mata-pelajaran" id="mata-pelajaran" class="form-control">
+                    <label for="mapel" class="form-label">Mata Pelajaran</label>
+                    <input type="text" name="mapel" id="mapel" class="form-control @error('mapel') is-invalid @enderror" value="{{ $mapel->mapel, old('mapel') }}" autofocus>
+                    @error('mapel')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
-                    <label for="kelas" class="form-label">Kelas</label>
+                    <label for="kelas" class="form-label">Kelas - </label> <small>Sebelumnya kelas {{ strtoupper($mapel->kelas) }}</small>
                     <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
                         <option value="x">X</option>
-                        <option value="x">XI</option>
-                        <option value="x">XI</option>
+                        <option value="xi">XI</option>
+                        <option value="xii">XII</option>
                     </select>
                 </div>
-                <button class="btn btn-dark mt-2">Tambah Kelas</button>
+                <button class="btn btn-warning mt-2">Edit Kelas</button>
             </form>
         </div>
     </div>
