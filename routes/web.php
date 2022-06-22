@@ -40,7 +40,10 @@ Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.ed
 
 // KELAS
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
+Route::post('/kelas', [KelasController::class, 'store'])->name('kelas.store');
 Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
+Route::put('/kelas/{id}/update', [KelasController::class, 'update'])->name('kelas.update');
+Route::delete('/kelas/{id}/delete', [KelasController::class, 'destroy'])->name('kelas.destroy');
 
 // MAPEL
 Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Guru extends Model
 {
     use HasFactory;
+
+    protected $guraded = [];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }
