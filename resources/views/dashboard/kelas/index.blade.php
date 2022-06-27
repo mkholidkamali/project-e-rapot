@@ -58,6 +58,15 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="mb-2">
+                            <label for="jurusan" class="form-label">Jurusan</label>
+                            <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
+                                <option value="tra">TRA</option>
+                                <option value="tja">TJA</option>
+                                <option value="tkj">TKJ</option>
+                                <option value="rpl">RPL</option>
+                            </select>
+                        </div>
                         <button class="btn btn-dark mt-2">Tambah Kelas</button>
                     </form>
                 </div>
@@ -79,6 +88,7 @@
                                 <tr>
                                     <td>#</td>
                                     <td>Nama Kelas</td>
+                                    <td>Jurusan</td>
                                     <td>Wali Kelas</td>
                                     <td>Opsi</td>
                                 </tr>
@@ -88,6 +98,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $kls->kelas }}</td>
+                                    <td>{{ strtoupper($kls->jurusan) }}</td>
                                     <td>{{ $kls->guru->name }}</td>
                                     <td class="text-center">
                                         <a class="btn btn-warning" href="{{ route('kelas.edit', $kls->id) }}"><i class="bi bi-pencil-square"></i></a>

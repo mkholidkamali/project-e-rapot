@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_id')->constrained('gurus')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('guru_id')->constrained('gurus');
 
             $table->string('kelas', 10);
+            $table->enum('jurusan', ['tra', 'tja', 'tkj', 'rpl']);
             $table->timestamps();
         });
     }

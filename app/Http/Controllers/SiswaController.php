@@ -54,6 +54,7 @@ class SiswaController extends Controller
         $siswa = Siswa::where('nis', $data['nis'])->get()->toArray();
         
         // Nilai 
+        // Rapot
     }
 
     /**

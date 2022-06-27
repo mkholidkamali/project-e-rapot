@@ -44,7 +44,8 @@
                     </div>
                 </div>
                 <div class="mb-2">
-                    <label for="guru_id" class="form-label">Wali Kelas</label>
+                    <label for="guru_id" class="form-label">Wali Kelas - </label>
+                    <span class="text-muted">Sebelumnya : {{ $kelas->guru->name }}</span>
                     <select class="form-select @error('guru_id') is-invalid  @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
                         @foreach ($gurus as $guru)
                             @if ($guru->id == $kelas->guru_id)
@@ -57,6 +58,16 @@
                     @error('guru_id')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
+                </div>
+                <div class="mb-2">
+                    <label for="jurusan" class="form-label">Jurusan</label>
+                    <span class="text-muted">Sebelumnya : {{ strtoupper($kelas->jurusan) }}</span>
+                    <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
+                        <option value="tra">TRA</option>
+                        <option value="tja">TJA</option>
+                        <option value="tkj">TKJ</option>
+                        <option value="rpl">RPL</option>
+                    </select>
                 </div>
                 <button class="btn btn-warning mt-2">Edit Kelas</button>
             </form>

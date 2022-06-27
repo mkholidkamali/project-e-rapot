@@ -51,15 +51,18 @@ class DatabaseSeeder extends Seeder
         ]);
         Kelas::create([
             'guru_id' => 1,
-            'kelas' => 'X Tel 1'
+            'kelas' => 'X Tel 1',
+            'jurusan' => 'tra',
         ]);
         Kelas::create([
             'guru_id' => 2,
-            'kelas' => 'XI Tel 2'
+            'kelas' => 'XI Tel 2',
+            'jurusan' => 'tja',
         ]);
         Kelas::create([
             'guru_id' => 3,
-            'kelas' => 'XII Tel 3'
+            'kelas' => 'XII Tel 3',
+            'jurusan' => 'tkj',
         ]);
         Siswa::create([
             'kelas_id' => 1,

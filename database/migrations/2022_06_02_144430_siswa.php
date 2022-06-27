@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('nis', 10)->unique();
             $table->string('nisn', 12)->unique();
             $table->string('nama');
-            $table->enum('jurusan', ['tra', 'tja', 'tkj', 'rpl']);
+            $table->enum('jurusan', ['tra', 'tja', 'tkj', 'rpl']); //Edit
             $table->enum('jenis_kelamin', ['l', 'p']);
             $table->enum('agama', ['islam', 'kapro', 'kakat', 'budha', 'hindu']);
             $table->string('foto');

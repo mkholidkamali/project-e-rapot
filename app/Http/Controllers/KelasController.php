@@ -43,7 +43,8 @@ class KelasController extends Controller
     {
         $data = $request->validate([
             "kelas" => ['required'],
-            'guru_id' => ['required', 'unique:kelas']
+            'guru_id' => ['required', 'unique:kelas'],
+            'jurusan' => ['required'],
         ]);
         $data['kelas'] = $data['kelas'] . " " . $request->input('nama-kelas');
         Kelas::create($data);
@@ -88,7 +89,8 @@ class KelasController extends Controller
     {
         $data = $request->validate([
             "kelas" => ['required'],
-            'guru_id' => ['required']
+            'guru_id' => ['required'],
+            'jurusan' => ['required'],
         ]);
         $data['kelas'] = $data['kelas'] . " " . $request->input('nama-kelas');
         Kelas::where('id', $id)->update($data);
