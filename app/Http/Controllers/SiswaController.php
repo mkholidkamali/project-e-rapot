@@ -15,7 +15,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('dashboard.siswa.index');
+        $siswa = Siswa::all();
+        return view('dashboard.siswa.index', [
+            'siswa' => $siswa,
+        ]);
     }
 
     /**
@@ -43,7 +46,6 @@ class SiswaController extends Controller
             'nis' => ['required', 'integer', 'unique:siswas'],
             'nisn' => ['required', 'integer', 'unique:siswas'],
             'nama' => ['required'],
-            'jurusan' => ['required'],
             'kelas_id' => ['required'],
             'jenis_kelamin' => ['required'],
             'agama' => ['required'],
@@ -76,7 +78,12 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.siswa.edit');
+        $kelas = Kelas::all();
+        $siswa = Siswa::find($id);
+        return view('dashboard.siswa.edit', [
+            'kelas' => $kelas,
+            'siswa' => $siswa
+        ]);
     }
 
     /**

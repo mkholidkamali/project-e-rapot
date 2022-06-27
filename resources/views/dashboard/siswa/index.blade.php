@@ -34,24 +34,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($siswa as $sis)
                         <tr>
-                            <td>1</td>
-                            <td>20198634</td>
-                            <td>Sandhy Putra</td>
-                            <td>RPL</td>
-                            <td>XII Tel 14</td>
-                            <td>Laki-laki</td>
-                            <td>Islam</td>
-                            <td>82918574919</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $sis->nis }}</td>
+                            <td>{{ $sis->nama }}</td>
+                            <td>{{ strtoupper($sis->kelas->jurusan) }}</td>
+                            <td>{{ $sis->kelas->kelas }}</td>
+                            <td>{{ $sis->jenis_kelamin="l" ? "Laki-laki" : "Perempuan" }}</td>
+                            <td>{{ strtoupper($sis->agama) }}</td>
+                            <td>{{ $sis->nisn }}</td>
                             <td>
-                                <img src="storage/profile/guru/profile.webp" class="" width="50px">
+                                <img src="{{ 'storage/' . $sis->foto  }}" class="" width="50px">
                             </td>
                             <td class="text-center">
                                 <a class="btn btn-primary" href="{{ route('siswa.show', 1) }}"><i class="bi bi-eye"></i></a>
-                                <a class="btn btn-warning" href="{{ route('siswa.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-warning" href="{{ route('siswa.edit', $sis->id) }}"><i class="bi bi-pencil-square"></i></a>
                                 <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

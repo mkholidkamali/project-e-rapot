@@ -34,19 +34,10 @@
                     @enderror
                 </div>
                 <div class="mb-2">
-                    <label for="jurusan" class="form-label">Jurusan</label>
-                    <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
-                        <option value="tra">TRA</option>
-                        <option value="tja">TJA</option>
-                        <option value="tkj">TKJ</option>
-                        <option value="rpl">RPL</option>
-                    </select>
-                </div>
-                <div class="mb-2">
                     <label for="kelas_id" class="form-label">Kelas</label>
                     <select class="form-select" aria-label="Default select example" name="kelas_id" id="kelas_id">
                         @forelse ($kelas as $kls)
-                            <option value="{{ $kls->id }}">{{ $kls->kelas }}</option>
+                            <option value="{{ $kls->id }}">{{ $kls->kelas }} - {{ strtoupper($kls->jurusan) }}</option>
                         @empty
                             <option value="">Kelas belum ada</option>
                         @endforelse

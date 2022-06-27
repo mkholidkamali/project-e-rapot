@@ -69,7 +69,6 @@ class DatabaseSeeder extends Seeder
             'nis' => '20191234',
             'nisn' => '728198208',
             'nama' => 'Anthon Fajri',
-            'jurusan' => 'tra',
             'jenis_kelamin' => 'l',
             'agama' => 'islam',
             'foto' => 'profile/guru/profile.webp'
@@ -79,7 +78,6 @@ class DatabaseSeeder extends Seeder
             'nis' => '20195678',
             'nisn' => '928728188',
             'nama' => 'Britania Ramadhan',
-            'jurusan' => 'tja',
             'jenis_kelamin' => 'l',
             'agama' => 'islam',
             'foto' => 'profile/guru/profile.webp'
@@ -89,7 +87,6 @@ class DatabaseSeeder extends Seeder
             'nis' => '20199101',
             'nisn' => '123837493',
             'nama' => 'Chris Budiman',
-            'jurusan' => 'tkj',
             'jenis_kelamin' => 'l',
             'agama' => 'kapro',
             'foto' => 'profile/guru/profile.webp'
