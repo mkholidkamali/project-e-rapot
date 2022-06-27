@@ -10,34 +10,46 @@
 
     <div class="card col-md-6">
         <div class="card-body">
-            <form action="" method="post" class="">
+            <form action="{{ route('siswa.store') }}" method="post" class="" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-2">
                     <label for="nis" class="form-label">NIS</label>
-                    <input type="number" class="form-control" name="nis" id="nis">
+                    <input type="number" class="form-control @error('nis') is-invalid @enderror" name="nis" id="nis" maxlength="8" value="{{ old('nis') }}">
+                    @error('nis')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
                     <label for="nisn" class="form-label">NISN</label>
-                    <input type="number" class="form-control" name="nisn" id="nisn">
+                    <input type="number" class="form-control @error('nisn') is-invalid @enderror" name="nisn" id="nisn" maxlength="10" value="{{ old('nisn') }}">
+                    @error('nisn')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
                     <label for="nama" class="form-label">Nama Siswa</label>
-                    <input type="text" class="form-control" name="nama" id="nama">
+                    <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" value="{{ old('nama') }}">
+                    @error('nama')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
                     <label for="jurusan" class="form-label">Jurusan</label>
                     <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
-                        <option value="">TRA</option>
-                        <option value="">TJA</option>
-                        <option value="">TKJ</option>
-                        <option value="">RPL</option>
+                        <option value="tra">TRA</option>
+                        <option value="tja">TJA</option>
+                        <option value="tkj">TKJ</option>
+                        <option value="rpl">RPL</option>
                     </select>
                 </div>
                 <div class="mb-2">
-                    <label for="kelas" class="form-label">Kelas</label>
-                    <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
-                        <option value="">X Tel 1</option>
-                        <option value="">XI Tel 2</option>
-                        <option value="">XII Tel 3</option>
+                    <label for="kelas_id" class="form-label">Kelas</label>
+                    <select class="form-select" aria-label="Default select example" name="kelas_id" id="kelas_id">
+                        @forelse ($kelas as $kls)
+                            <option value="{{ $kls->id }}">{{ $kls->kelas }}</option>
+                        @empty
+                            <option value="">Kelas belum ada</option>
+                        @endforelse
                     </select>
                 </div>
                 <div class="mb-2">
@@ -50,18 +62,18 @@
                 <div class="mb-2">
                     <label for="agama" class="form-label">Agama</label>
                     <select class="form-select" aria-label="Default select example" name="agama" id="agama">
-                        <option value="">Islam</option>
-                        <option value="">Hindu</option>
-                        <option value="">Budha</option>
-                        <option value="">Kristen</option>
-                        <option value="">Kong Hu Cu</option>
+                        <option value="islam">Islam</option>
+                        <option value="kapro">Kristen Protestan</option>
+                        <option value="kakat">Kristen Katholik</option>
+                        <option value="budha">Budha</option>
+                        <option value="hindu">Hindu</option>
                     </select>
                 </div>
                 <div class="mb-2">
                     <label for="foto" class="form-label">Foto</label>
                     <input type="file" class="form-control" name="foto" id="foto">
                 </div>
-                <button class="btn btn-success mt-2">Tambah Guru</button>
+                <button type="submit" class="btn btn-success mt-2">Tambah Guru</button>
             </form>
         </div>
     </div>

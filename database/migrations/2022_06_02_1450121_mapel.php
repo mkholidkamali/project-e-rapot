@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             
             $table->string('kelas');
+            $table->enum('jurusan', ['tra', 'tja', 'tkj', 'rpl']);
             $table->string('mapel');
             $table->timestamps();
         });

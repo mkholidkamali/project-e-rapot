@@ -16,15 +16,17 @@ return new class extends Migration
         Schema::create('nilais', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('mapel_id');
-            $table->unsignedBigInteger('siswa_id');
-            $table->unsignedBigInteger('rapot_id');
-            $table->foreign('mapel_id')->references('id')->on('mapel');
-            $table->foreign('siswa_id')->references('id')->on('siswa');
-            $table->foreign('rapot_id')->references('id')->on('rapot');
+            $table->foreignId('mapel_id');
+            $table->foreignId('siswa_id');
+            $table->foreignId('rapot_id');
 
-            $table->integer('nilai');
-            $table->integer('kkm');
+            $table->integer('pengetahuan')->default(0);
+            $table->integer('predikat_pengetahuan')->default(0);
+            $table->integer('ketrampilan')->default(0);
+            $table->integer('predikat_ketrampilan')->default(0);
+            $table->integer('nilai_akhir')->default(0);
+            $table->integer('predikat_nilai_akhir')->default(0);
+            $table->integer('kkm')->default(75);
             $table->timestamps();
             
         });

@@ -3,10 +3,10 @@
 
 @section('main')
 
-    <h1 class="mt-3">Kelas - Update</h1>
+    <h1 class="mt-3">Mapel - Update</h1>
     <hr>
 
-    <a class="btn btn-primary mb-2 px-3" href="{{ route('kelas.index') }}">Back</a>
+    <a class="btn btn-primary mb-2 px-3" href="{{ route('mapel.index') }}">Back</a>
 
     <div class="card col-md-6">
         <div class="card-body">
@@ -26,6 +26,15 @@
                         <option value="x">X</option>
                         <option value="xi">XI</option>
                         <option value="xii">XII</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="jurusan" class="form-label">Jurusan - </label> <small>Sebelumnya jurusan {{ strtoupper($mapel->jurusan) }}</small>
+                    <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
+                        <option value="tra">TRA</option>
+                        <option value="tja">TJA</option>
+                        <option value="tkj">TKJ</option>
+                        <option value="rpl">RPL</option>
                     </select>
                 </div>
                 <button class="btn btn-warning mt-2">Edit Kelas</button>

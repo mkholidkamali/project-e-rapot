@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Guru;
+use App\Models\Kelas;
+use App\Models\Mapel;
+use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -45,6 +48,63 @@ class DatabaseSeeder extends Seeder
             'name' => 'Chris',
             'jenis_kelamin' => 'l',
             'foto' => 'testing.jpg'
+        ]);
+        Kelas::create([
+            'guru_id' => 1,
+            'kelas' => 'X Tel 1'
+        ]);
+        Kelas::create([
+            'guru_id' => 2,
+            'kelas' => 'XI Tel 2'
+        ]);
+        Kelas::create([
+            'guru_id' => 3,
+            'kelas' => 'XII Tel 3'
+        ]);
+        Siswa::create([
+            'kelas_id' => 1,
+            'nis' => '20191234',
+            'nisn' => '728198208',
+            'nama' => 'Anthon Fajri',
+            'jurusan' => 'tra',
+            'jenis_kelamin' => 'l',
+            'agama' => 'islam',
+            'foto' => 'profile/guru/profile.webp'
+        ]);
+        Siswa::create([
+            'kelas_id' => 2,
+            'nis' => '20195678',
+            'nisn' => '928728188',
+            'nama' => 'Britania Ramadhan',
+            'jurusan' => 'tja',
+            'jenis_kelamin' => 'l',
+            'agama' => 'islam',
+            'foto' => 'profile/guru/profile.webp'
+        ]);
+        Siswa::create([
+            'kelas_id' => 3,
+            'nis' => '20199101',
+            'nisn' => '123837493',
+            'nama' => 'Chris Budiman',
+            'jurusan' => 'tkj',
+            'jenis_kelamin' => 'l',
+            'agama' => 'kapro',
+            'foto' => 'profile/guru/profile.webp'
+        ]);
+        Mapel::create([
+            'kelas' => 'x',
+            'mapel' => 'Matematika',
+            'jurusan' => 'rpl'
+        ]);
+        Mapel::create([
+            'kelas' => 'xi',
+            'mapel' => 'Bahasa Indonesia',
+            'jurusan' => 'tkj'
+        ]);
+        Mapel::create([
+            'kelas' => 'xii',
+            'mapel' => 'Pemrograman Web',
+            'jurusan' => 'tja'
         ]);
     }
 }

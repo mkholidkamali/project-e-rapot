@@ -19,12 +19,13 @@ return new class extends Migration
             $table->unsignedBigInteger('kelas_id');
             $table->foreign('kelas_id')->references('id')->on('kelas');
 
-            $table->string('nis', 10);
-            $table->string('nisn', 12);
+            $table->string('nis', 10)->unique();
+            $table->string('nisn', 12)->unique();
             $table->string('nama');
-            $table->enum('jurusan', ['tr', 'tja', 'tkj', 'rpl']);
+            $table->enum('jurusan', ['tra', 'tja', 'tkj', 'rpl']);
             $table->enum('jenis_kelamin', ['l', 'p']);
             $table->enum('agama', ['islam', 'kapro', 'kakat', 'budha', 'hindu']);
+            $table->string('foto');
             $table->timestamps();
         });
     }

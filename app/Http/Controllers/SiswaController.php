@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -23,7 +25,10 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.siswa.create');
+        $kelas = Kelas::all();
+        return view('dashboard.siswa.create', [
+            'kelas' => $kelas
+        ]);
     }
 
     /**
@@ -34,7 +39,21 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nis' => ['required', 'integer', 'unique:siswas'],
+            'nisn' => ['required', 'integer', 'unique:siswas'],
+            'nama' => ['required'],
+            'jurusan' => ['required'],
+            'kelas_id' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'agama' => ['required'],
+        ]);
+        $data['foto'] = 'profile/guru/profile.webp';
+        Siswa::create($data);
+
+        $siswa = Siswa::where('nis', $data['nis'])->get()->toArray();
+        
+        // Nilai 
     }
 
     /**

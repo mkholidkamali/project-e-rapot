@@ -41,6 +41,7 @@ class MapelController extends Controller
         $data = $this->validate($request, [
             "mapel" => ['required'],
             "kelas" => ['required'],
+            "jurusan" => ['required'],
         ]);
         Mapel::create($data);
         return back()->with('success', 'Berhasil tambah Mapel');
@@ -82,7 +83,8 @@ class MapelController extends Controller
     {
         $data = $request->validate([
             'mapel' => ['required'],
-            'kelas' => ['required']
+            'kelas' => ['required'],
+            "jurusan" => ['required'],
         ]);
         Mapel::where('id', $id)->update($data);
         return redirect(route('mapel.index'))->with('success', "Berhasil mengupdate mapel");

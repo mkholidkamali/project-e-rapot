@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('rapots', function (Blueprint $table) {
             $table->id();
 
+            $table->integer('rata_pengetahuan')->default(0);
+            $table->integer('rata_ketrampilan')->default(0);
+            $table->integer('rata_nilai_akhir')->default(0);
+            $table->string('catatan_akademik');
             $table->enum('semester', ['ganjil', 'genap']);
-            $table->enum('kelas', ['x', 'xi', 'xii']);
             $table->timestamps();
         });
     }

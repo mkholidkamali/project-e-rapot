@@ -11,23 +11,32 @@
 
             <h5>Data Nilai</h5>
             <small>Note* : Ini nanti mungkin di select dlu baru muncul datanya</small>
-            <div class="col-md-3">
+            <div class="col-md-8">
                 <form action="" method="post" class="mt-2 px-2">
-                    <div class="mb-2">
-                        <label for="kelas" class="form-label">Kelas</label>
-                        <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
-                            <option value="x">X Tel 1</option>
-                            <option value="x">XI Tel 2</option>
-                            <option value="x">XII Tel 3</option>
-                        </select>
-                    </div>
-                    <div class="mb-2">
-                        <label for="mata-pelajaran" class="form-label">Mata Pelajaran</label>
-                        <select name="mata-pelajaran" id="mata-pelajaran" class="form-select">
-                            <option value="x">MTK</option>
-                            <option value="x">Bahasa Indonesia</option>
-                            <option value="x">Pemrograman Web</option>
-                        </select>
+                    <div class="d-flex">
+                        <div class="mb-1 me-2">
+                            <label for="kelas" class="form-label">Kelas</label>
+                            <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
+                                <option value="x">X Tel 1</option>
+                                <option value="x">XI Tel 2</option>
+                                <option value="x">XII Tel 3</option>
+                            </select>
+                        </div>
+                        <div class="mb-1 me-2">
+                            <label for="mata-pelajaran" class="form-label">Mata Pelajaran</label>
+                            <select name="mata-pelajaran" id="mata-pelajaran" class="form-select">
+                                <option value="x">MTK</option>
+                                <option value="x">Bahasa Indonesia</option>
+                                <option value="x">Pemrograman Web</option>
+                            </select>
+                        </div>
+                        <div class="mb-1 me-2">
+                            <label for="mata-pelajaran" class="form-label">Semester</label>
+                            <select name="mata-pelajaran" id="mata-pelajaran" class="form-select">
+                                <option value="ganjil">Ganjil</option>
+                                <option value="genap">Genap</option>
+                            </select>
+                        </div>
                     </div>
                     <button class="btn btn-dark mt-2 px-4">Pilih</button>
                 </form>
@@ -48,13 +57,9 @@
                         <tr >
                             <td>#</td>
                             <td>Nama Siswa</td>
-                            <td>Nilai Harian</td>
-                            <td>UTS</td>
-                            <td>UAS</td>
                             <td>Pengetahuan</td>
-                            <td style="width: 4vh">Predikat Pengetahuan</td>
                             <td>Ketrampilan</td>
-                            <td style="width: 4vh">Predikat Ketrampilan</td>
+                            <td colspan="2">Nilai akhir</td>
                             <td>Opsi</td>
                         </tr>
                     </thead>
@@ -63,11 +68,8 @@
                             <td>1</td>
                             <td>Anthonio D Caprio</td>
                             <td>89</td>
-                            <td>90</td>
-                            <td>89</td>
-                            <td>89</td>
-                            <td>B</td>
                             <td>95</td>
+                            <td>99</td>
                             <td>A</td>
                             <td class="text-center">
                                 <a class="btn btn-primary" href="{{ route('nilai.show', 1) }}"><i class="bi bi-eye"></i></a>
