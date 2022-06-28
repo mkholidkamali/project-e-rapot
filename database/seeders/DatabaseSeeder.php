@@ -49,6 +49,12 @@ class DatabaseSeeder extends Seeder
             'jenis_kelamin' => 'l',
             'foto' => 'testing.jpg'
         ]);
+        Guru::create([
+            'no_induk' => '1234567890',
+            'name' => 'Gema',
+            'jenis_kelamin' => 'l',
+            'foto' => 'testing.jpg'
+        ]);
         Kelas::create([
             'guru_id' => 1,
             'kelas' => 'X Tel 1',
@@ -56,13 +62,13 @@ class DatabaseSeeder extends Seeder
         ]);
         Kelas::create([
             'guru_id' => 2,
-            'kelas' => 'XI Tel 2',
-            'jurusan' => 'tja',
+            'kelas' => 'X Tel 2',
+            'jurusan' => 'tra',
         ]);
         Kelas::create([
-            'guru_id' => 3,
-            'kelas' => 'XII Tel 3',
-            'jurusan' => 'tkj',
+            'guru_id' => 2,
+            'kelas' => 'X Tel 2',
+            'jurusan' => 'tra',
         ]);
         Siswa::create([
             'kelas_id' => 1,
@@ -94,7 +100,12 @@ class DatabaseSeeder extends Seeder
         Mapel::create([
             'kelas' => 'x',
             'mapel' => 'Matematika',
-            'jurusan' => 'rpl'
+            'jurusan' => 'tra'
+        ]);
+        Mapel::create([
+            'kelas' => 'x',
+            'mapel' => 'Matematika Terapan',
+            'jurusan' => 'tra'
         ]);
         Mapel::create([
             'kelas' => 'xi',
@@ -102,9 +113,19 @@ class DatabaseSeeder extends Seeder
             'jurusan' => 'tkj'
         ]);
         Mapel::create([
+            'kelas' => 'xi',
+            'mapel' => 'Bahasa Inggris',
+            'jurusan' => 'tkj'
+        ]);
+        Mapel::create([
             'kelas' => 'xii',
             'mapel' => 'Pemrograman Web',
-            'jurusan' => 'tja'
+            'jurusan' => 'rpl'
+        ]);
+        Mapel::create([
+            'kelas' => 'xii',
+            'mapel' => 'Pemrograman Database',
+            'jurusan' => 'rpl'
         ]);
     }
 }

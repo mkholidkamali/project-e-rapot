@@ -21,11 +21,11 @@ return new class extends Migration
             $table->foreignId('rapot_id');
 
             $table->integer('pengetahuan')->default(0);
-            $table->integer('predikat_pengetahuan')->default(0);
+            $table->char('predikat_pengetahuan')->default('');
             $table->integer('ketrampilan')->default(0);
-            $table->integer('predikat_ketrampilan')->default(0);
+            $table->char('predikat_ketrampilan')->default('');
             $table->integer('nilai_akhir')->default(0);
-            $table->integer('predikat_nilai_akhir')->default(0);
+            $table->char('predikat_nilai_akhir')->default('');
             $table->integer('kkm')->default(75);
             $table->timestamps();
             

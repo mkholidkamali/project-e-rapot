@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Mapel;
+use App\Models\Nilai;
+use App\Models\Rapot;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -15,7 +18,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::all();
+        $siswa = Siswa::orderBy('kelas_id')->get();
         return view('dashboard.siswa.index', [
             'siswa' => $siswa,
         ]);
@@ -53,10 +56,60 @@ class SiswaController extends Controller
         $data['foto'] = 'profile/guru/profile.webp';
         Siswa::create($data);
 
-        $siswa = Siswa::where('nis', $data['nis'])->get()->toArray();
-        
-        // Nilai 
-        // Rapot
+        // RAPOT
+        $siswas = Siswa::where('nis', $data['nis'])->get()->toArray();
+        $siswa = $siswas[0];
+        Rapot::create([
+            'semester' => 'ganjil',
+            'nis' => $siswa['nis'],
+        ]);
+        Rapot::create([
+            'semester' => 'genap',
+            'nis' => $siswa['nis'],
+        ]);
+
+        // Rapot id
+        $rapotGanjils = Rapot::where([
+            [ 'nis', $siswa['nis'] ],
+            [ 'semester', 'ganjil' ],
+        ])->get()->toArray();
+        $rapotGenaps = Rapot::where([
+            [ 'nis', $siswa['nis'] ],
+            [ 'semester', 'genap' ],
+        ])->get()->toArray();
+        $rapotGanjil = $rapotGanjils[0];
+        $rapotGenap = $rapotGenaps[0];
+
+        // Kelas id
+        $kelass = Kelas::find($siswa['kelas_id'])->get()->toArray();
+        $kelas = $kelass[0];
+        $kelasArray = explode(' ', trim($kelas['kelas']));
+
+        // Mapel
+        $mapels = Mapel::where([
+                ['jurusan', $kelas['jurusan']],
+            ['kelas', $kelasArray[0]],
+        ])->get();
+
+        // NILAI
+        // Ganjil
+        foreach ($mapels as $mapel) {
+            Nilai::create([
+                'mapel_id' => $mapel['id'],
+                'siswa_id' => $siswa['id'],
+                'rapot_id' => $rapotGanjil['id'],
+            ]);
+        }
+        // Genap
+        foreach ($mapels as $mapel) {
+            Nilai::create([
+                'mapel_id' => $mapel['id'],
+                'siswa_id' => $siswa['id'],
+                'rapot_id' => $rapotGenap['id'],
+            ]);
+        }
+
+        return redirect(route('siswa.index'))->with('success', 'Berhasil menambah siswa');
     }
 
     /**
@@ -67,7 +120,10 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        return view('dashboard.siswa.show');
+        $siswa = Siswa::where('id', $id)->first();
+        return view('dashboard.siswa.show', [
+            'siswa' => $siswa
+        ]);
     }
 
     /**
@@ -95,7 +151,18 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'nis' => ['required', 'integer', 'unique:siswas'],
+            'nisn' => ['required', 'integer', 'unique:siswas'],
+            'nama' => ['required'],
+            'kelas_id' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'agama' => ['required'],
+        ]);
+        $data['foto'] = 'profile/guru/profile.webp';
+        Siswa::where('id', $id)->update($data);
+
+        return redirect(route('siswa.index'))->with('success', 'Berhasil menambah siswa');
     }
 
     /**
@@ -106,6 +173,13 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nilais = Nilai::where('siswa_id', $id)->get();
+        foreach ($nilais as $nilai) {
+            Rapot::destroy($nilai->rapot_id);
+            Nilai::destroy($nilai->id);
+        }
+        Siswa::destroy($id);
+        
+        return back()->with('success', 'Berhasil menghapus data siswa');
     }
 }

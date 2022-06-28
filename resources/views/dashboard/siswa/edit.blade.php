@@ -12,6 +12,7 @@
         <div class="card-body">
             <form action="{{ route('siswa.update', $siswa->id) }}" method="post" class="" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="mb-2">
                     <label for="nis" class="form-label">NIS</label>
                     <input type="number" class="form-control @error('nis') is-invalid @enderror" name="nis" id="nis" maxlength="8" value="{{ $siswa->nis, old('nis') }}">
@@ -67,7 +68,7 @@
                     <label for="foto" class="form-label">Foto</label>
                     <input type="file" class="form-control" name="foto" id="foto">
                 </div>
-                <button type="submit" class="btn btn-success mt-2">Tambah Guru</button>
+                <button type="submit" class="btn btn-warning mt-2">Edit Guru</button>
             </form>
         </div>
     </div>

@@ -38,7 +38,8 @@ Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.cre
 Route::post('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
 Route::get('/siswa/{id}/show', [SiswaController::class, 'show'])->name('siswa.show');
 Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
-Route::get('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
+Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
+Route::delete('/siswa/{id}/delete', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
 // KELAS
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');

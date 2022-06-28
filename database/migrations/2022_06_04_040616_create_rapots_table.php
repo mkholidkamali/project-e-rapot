@@ -19,8 +19,9 @@ return new class extends Migration
             $table->integer('rata_pengetahuan')->default(0);
             $table->integer('rata_ketrampilan')->default(0);
             $table->integer('rata_nilai_akhir')->default(0);
-            $table->string('catatan_akademik');
+            $table->text('catatan_akademik')->nullable();
             $table->enum('semester', ['ganjil', 'genap']);
+            $table->integer('nis');
             $table->timestamps();
         });
     }

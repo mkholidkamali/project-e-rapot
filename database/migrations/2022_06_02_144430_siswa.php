@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('kelas_id');
-            $table->foreign('kelas_id')->references('id')->on('kelas');
+            $table->foreignId('kelas_id')->constrained();
 
             $table->string('nis', 10)->unique();
             $table->string('nisn', 12)->unique();

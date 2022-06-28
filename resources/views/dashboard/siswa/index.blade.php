@@ -3,7 +3,14 @@
 
 @section('main')
 
-    <h1 class="mt-3">Siswa</h1>
+    <div class="d-flex ">
+        <h1 class="mt-3 align-items-center">Siswa</h1>
+        @if (session('success'))
+            <div class="alert alert-success my-auto ms-3 py-2 mt-4" role="alert">
+                {!! session('success') !!}
+            </div>
+        @endif
+    </div>
     <hr>
 
     <a class="btn btn-success" href="{{ route('siswa.create') }}">Tambah Siswa</a>
@@ -48,9 +55,13 @@
                                 <img src="{{ 'storage/' . $sis->foto  }}" class="" width="50px">
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-primary" href="{{ route('siswa.show', 1) }}"><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-primary" href="{{ route('siswa.show', $sis->id) }}"><i class="bi bi-eye"></i></a>
                                 <a class="btn btn-warning" href="{{ route('siswa.edit', $sis->id) }}"><i class="bi bi-pencil-square"></i></a>
-                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                <form action="{{ route('siswa.destroy', $sis->id) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus data siswa ini?')"><i class="bi bi-trash-fill"></i></button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
