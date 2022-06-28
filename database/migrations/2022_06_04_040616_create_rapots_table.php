@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('rata_pengetahuan')->default(0);
             $table->integer('rata_ketrampilan')->default(0);
             $table->integer('rata_nilai_akhir')->default(0);
+            $table->integer('rata_predikat')->default(0);
             $table->text('catatan_akademik')->nullable();
             $table->integer('nis');
             $table->timestamps();

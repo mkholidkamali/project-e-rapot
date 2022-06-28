@@ -61,3 +61,4 @@ Route::post('/nilai', [NilaiController::class, 'select'])->name('nilai.select');
 Route::get('/nilai/create', [NilaiController::class, 'create'])->name('nilai.create');
 Route::get('/nilai/{id}/show', [NilaiController::class, 'show'])->name('nilai.show');
 Route::get('/nilai/{id}/edit', [NilaiController::class, 'edit'])->name('nilai.edit');
+Route::post('/nilai/{id}/update', [NilaiController::class, 'update'])->name('nilai.update');

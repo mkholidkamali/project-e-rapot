@@ -118,7 +118,10 @@ class NilaiController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.nilai.edit');
+        $nilai = Nilai::find($id);
+        return view('dashboard.nilai.edit', [
+            'nilai' => $nilai
+        ]);
     }
 
     /**
@@ -130,7 +133,24 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'pengetahuan' => ['required', 'max:3'],
+            'ketrampilan' => ['required', 'max:3']
+        ]);
+        $data['nilai_akhir'] = ($data['pengetahuan'] + $data['ketrampilan']) / 2;
+        if ($data['nilai_akhir'] >= 85 && $data['nilai_akhir'] <= 100) {
+            $data['predikat'] = 'A';
+        } else if ($data['nilai_akhir'] >= 75 && $data['nilai_akhir'] <= 84) {
+            $data['predikat'] = 'B';
+        } else if ($data['nilai_akhir'] >= 60 && $data['nilai_akhir'] <= 74) {
+            $data['predikat'] = 'C';
+        } else {
+            $data['predikat'] = 'D';
+        }
+
+        Nilai::where('id', $id)->update($data);
+
+        return redirect(route('nilai.index'))->with('success', 'Berhasil mengubah nilai');
     }
 
     /**
