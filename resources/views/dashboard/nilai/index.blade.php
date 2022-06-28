@@ -87,7 +87,7 @@
                                 <td>{{ $nilai->nilai_akhir }}</td>
                                 <td>{{ $nilai->predikat }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary" href="{{ route('nilai.show', 1) }}"><i class="bi bi-eye"></i></a>
+                                    {{-- <a class="btn btn-primary" href="{{ route('nilai.show', 1) }}"><i class="bi bi-eye"></i></a> --}}
                                     <a class="btn btn-warning" href="{{ route('nilai.edit', $nilai->id) }}"><i class="bi bi-pencil-square"></i></a>
                                 </td>
                             </tr>

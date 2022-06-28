@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Mapel;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,10 @@ class MapelController extends Controller
     public function index()
     {
         $mapels = Mapel::all();
+        $gurus = Guru::all();
         return view('dashboard.mapel.index', [
-            'mapels' => $mapels
+            'mapels' => $mapels,
+            'gurus' => $gurus,
         ]);
     }
 
@@ -39,6 +42,7 @@ class MapelController extends Controller
     public function store(Request $request)
     {
         $data = $this->validate($request, [
+            "guru_id" => ['required'],
             "mapel" => ['required'],
             "kelas" => ['required'],
             "jurusan" => ['required'],
@@ -67,8 +71,10 @@ class MapelController extends Controller
     public function edit($id)
     {
         $mapel = Mapel::find($id);
+        $gurus = Guru::all();
         return view("dashboard.mapel.edit", [
-            'mapel' => $mapel
+            'mapel' => $mapel,
+            'gurus' => $gurus
         ]);
     }
 
@@ -82,6 +88,7 @@ class MapelController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
+            'guru_id' => ['required'],
             'mapel' => ['required'],
             'kelas' => ['required'],
             "jurusan" => ['required'],

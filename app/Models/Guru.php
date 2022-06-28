@@ -15,4 +15,9 @@ class Guru extends Model
     {
         return $this->belongsTo(Kelas::class);
     }
+
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class);
+    }
 }

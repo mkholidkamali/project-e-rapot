@@ -56,6 +56,18 @@ class DatabaseSeeder extends Seeder
             'jenis_kelamin' => 'l',
             'foto' => 'testing.jpg'
         ]);
+        Guru::create([
+            'no_induk' => '1234567891',
+            'name' => 'Gita',
+            'jenis_kelamin' => 'l',
+            'foto' => 'testing.jpg'
+        ]);
+        Guru::create([
+            'no_induk' => '1234567892',
+            'name' => 'Tara',
+            'jenis_kelamin' => 'l',
+            'foto' => 'testing.jpg'
+        ]);
         Kelas::create([
             'guru_id' => 1,
             'kelas' => 'X Tel 1',
@@ -99,31 +111,37 @@ class DatabaseSeeder extends Seeder
             'foto' => 'profile/guru/profile.webp'
         ]);
         Mapel::create([
+            'guru_id' => 1,
             'kelas' => 'x',
             'mapel' => 'Matematika',
             'jurusan' => 'tra'
         ]);
         Mapel::create([
+            'guru_id' => 2,
             'kelas' => 'x',
             'mapel' => 'Matematika Terapan',
             'jurusan' => 'tra'
         ]);
         Mapel::create([
+            'guru_id' => 3,
             'kelas' => 'xi',
             'mapel' => 'Bahasa Indonesia',
             'jurusan' => 'tkj'
         ]);
         Mapel::create([
+            'guru_id' => 4,
             'kelas' => 'xi',
             'mapel' => 'Bahasa Inggris',
             'jurusan' => 'tkj'
         ]);
         Mapel::create([
+            'guru_id' => 5,
             'kelas' => 'xii',
             'mapel' => 'Pemrograman Web',
             'jurusan' => 'rpl'
         ]);
         Mapel::create([
+            'guru_id' => 6,
             'kelas' => 'xii',
             'mapel' => 'Pemrograman Database',
             'jurusan' => 'rpl'

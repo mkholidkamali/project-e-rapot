@@ -45,6 +45,14 @@
                                 <option value="rpl">RPL</option>
                             </select>
                         </div>
+                        <div class="mb-2">
+                            <label for="guru_id" class="form-label">Guru Pengajar</label>
+                            <select class="form-select @error('guru_id') is-invalid @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
+                                @foreach ($gurus as $guru)
+                                    <option value="{{ $guru->id }}">{{ $guru->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-dark mt-2">Tambah Kelas</button>
                     </form>
 
@@ -79,6 +87,7 @@
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
                                             <td>Jurusan</td>
+                                            <td>Guru</td>
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
@@ -91,6 +100,7 @@
                                                 <td>{{ $mapel->mapel }}</td>
                                                 <td>{{ strtoupper($mapel->kelas) }}</td>
                                                 <td>{{ strtoupper($mapel->jurusan) }}</td>
+                                                <td>{{ $mapel->guru->name }}</td>
                                                 <td class="text-center">
                                                     <a class="btn btn-warning" href="{{ route('mapel.edit', $mapel['id']) }}"><i class="bi bi-pencil-square"></i></a>
                                                     <form action="{{ route('mapel.destroy', $mapel['id']) }}" method="POST" class="d-inline">
@@ -121,6 +131,7 @@
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
                                             <td>Jurusan</td>
+                                            <td>Guru</td>
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
@@ -133,6 +144,7 @@
                                                 <td>{{ $mapel->mapel }}</td>
                                                 <td>{{ strtoupper($mapel->kelas) }}</td>
                                                 <td>{{ strtoupper($mapel->jurusan) }}</td>
+                                                <td>{{ $mapel->guru->name }}</td>
                                                 <td class="text-center">
                                                     <a class="btn btn-warning" href="{{ route('mapel.edit', $mapel['id']) }}"><i class="bi bi-pencil-square"></i></a>
                                                     <form action="{{ route('mapel.destroy', $mapel['id']) }}" method="POST" class="d-inline">
@@ -163,6 +175,7 @@
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
                                             <td>Jurusan</td>
+                                            <td>Guru</td>
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
@@ -175,6 +188,7 @@
                                                 <td>{{ $mapel->mapel }}</td>
                                                 <td>{{ strtoupper($mapel->kelas) }}</td>
                                                 <td>{{ strtoupper($mapel->jurusan) }}</td>
+                                                <td>{{ $mapel->guru->name }}</td>
                                                 <td class="text-center">
                                                     <a class="btn btn-warning" href="{{ route('mapel.edit', $mapel['id']) }}"><i class="bi bi-pencil-square"></i></a>
                                                     <form action="{{ route('mapel.destroy', $mapel['id']) }}" method="POST" class="d-inline">

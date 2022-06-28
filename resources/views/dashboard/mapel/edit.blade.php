@@ -21,7 +21,7 @@
                     @enderror
                 </div>
                 <div class="mb-2">
-                    <label for="kelas" class="form-label">Kelas - </label> <small>Sebelumnya kelas {{ strtoupper($mapel->kelas) }}</small>
+                    <label for="kelas" class="form-label">Kelas - </label> <small>Sebelumnya : {{ strtoupper($mapel->kelas) }}</small>
                     <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
                         <option value="x">X</option>
                         <option value="xi">XI</option>
@@ -29,12 +29,20 @@
                     </select>
                 </div>
                 <div class="mb-2">
-                    <label for="jurusan" class="form-label">Jurusan - </label> <small>Sebelumnya jurusan {{ strtoupper($mapel->jurusan) }}</small>
+                    <label for="jurusan" class="form-label">Jurusan - </label> <small>Sebelumnya : {{ strtoupper($mapel->jurusan) }}</small>
                     <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
                         <option value="tra">TRA</option>
                         <option value="tja">TJA</option>
                         <option value="tkj">TKJ</option>
                         <option value="rpl">RPL</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="guru_id" class="form-label">Guru Pengajar - </label> <small>Sebelumnya : {{ $mapel->guru->name }}</small>
+                    <select class="form-select @error('guru_id') is-invalid @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
+                        @foreach ($gurus as $guru)
+                            <option value="{{ $guru->id }}">{{ $guru->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <button class="btn btn-warning mt-2">Edit Kelas</button>
