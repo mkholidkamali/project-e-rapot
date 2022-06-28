@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('mapel_id');
             $table->foreignId('siswa_id');
             $table->foreignId('rapot_id');
+            $table->foreignId('semester_id');
 
             $table->integer('pengetahuan')->default(0);
             $table->char('predikat_pengetahuan')->default('');

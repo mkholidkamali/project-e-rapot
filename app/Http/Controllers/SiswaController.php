@@ -60,25 +60,25 @@ class SiswaController extends Controller
         $siswas = Siswa::where('nis', $data['nis'])->get()->toArray();
         $siswa = $siswas[0];
         Rapot::create([
-            'semester' => 'ganjil',
             'nis' => $siswa['nis'],
+            'semester_id' => 1,
         ]);
         Rapot::create([
-            'semester' => 'genap',
             'nis' => $siswa['nis'],
+            'semester_id' => 2,
         ]);
 
         // Rapot id
-        $rapotGanjils = Rapot::where([
+        $rapotGanjil = Rapot::where([
             [ 'nis', $siswa['nis'] ],
-            [ 'semester', 'ganjil' ],
+            [ 'semester_id', '1' ],
         ])->get()->toArray();
-        $rapotGenaps = Rapot::where([
+        $rapotGenap = Rapot::where([
             [ 'nis', $siswa['nis'] ],
-            [ 'semester', 'genap' ],
+            [ 'semester_id', '2' ],
         ])->get()->toArray();
-        $rapotGanjil = $rapotGanjils[0];
-        $rapotGenap = $rapotGenaps[0];
+        $rapotGanjil = $rapotGanjil[0];
+        $rapotGenap = $rapotGenap[0];
 
         // Kelas id
         $kelass = Kelas::find($siswa['kelas_id'])->get()->toArray();
@@ -98,6 +98,7 @@ class SiswaController extends Controller
                 'mapel_id' => $mapel['id'],
                 'siswa_id' => $siswa['id'],
                 'rapot_id' => $rapotGanjil['id'],
+                'semester_id' => 1,
             ]);
         }
         // Genap
@@ -106,6 +107,7 @@ class SiswaController extends Controller
                 'mapel_id' => $mapel['id'],
                 'siswa_id' => $siswa['id'],
                 'rapot_id' => $rapotGenap['id'],
+                'semester_id' => 2,
             ]);
         }
 

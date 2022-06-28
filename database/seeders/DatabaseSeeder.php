@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Mapel;
+use App\Models\Semester;
 use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -63,12 +64,12 @@ class DatabaseSeeder extends Seeder
         Kelas::create([
             'guru_id' => 2,
             'kelas' => 'X Tel 2',
-            'jurusan' => 'tra',
+            'jurusan' => 'tja',
         ]);
         Kelas::create([
-            'guru_id' => 2,
-            'kelas' => 'X Tel 2',
-            'jurusan' => 'tra',
+            'guru_id' => 3,
+            'kelas' => 'X Tel 3',
+            'jurusan' => 'tkj',
         ]);
         Siswa::create([
             'kelas_id' => 1,
@@ -126,6 +127,12 @@ class DatabaseSeeder extends Seeder
             'kelas' => 'xii',
             'mapel' => 'Pemrograman Database',
             'jurusan' => 'rpl'
+        ]);
+        Semester::create([
+            'semester' => 'Ganjil',
+        ]);
+        Semester::create([
+            'semester' => 'Genap',
         ]);
     }
 }

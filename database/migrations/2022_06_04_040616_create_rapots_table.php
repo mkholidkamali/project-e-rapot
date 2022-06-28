@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rapots', function (Blueprint $table) {
-            $table->id();
+            $table->id();   
+            $table->foreignId('semester_id');
 
             $table->integer('rata_pengetahuan')->default(0);
             $table->integer('rata_ketrampilan')->default(0);
             $table->integer('rata_nilai_akhir')->default(0);
             $table->text('catatan_akademik')->nullable();
-            $table->enum('semester', ['ganjil', 'genap']);
             $table->integer('nis');
             $table->timestamps();
         });

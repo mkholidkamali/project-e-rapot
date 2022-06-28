@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\Mapel;
+use App\Models\Nilai;
+use App\Models\Rapot;
+use App\Models\Semester;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class NilaiController extends Controller
@@ -13,7 +19,63 @@ class NilaiController extends Controller
      */
     public function index()
     {
-        return view('dashboard.nilai.index');
+        $kelas = Kelas::all();
+        $mapels = Mapel::all();
+        $semesters = Semester::all();
+        $dataNilai = [];
+        $selected = '';
+        return view('dashboard.nilai.index', [
+            'kelas' => $kelas,
+            'mapels' => $mapels,
+            'semesters' => $semesters,
+            'dataNilai' => $dataNilai,
+            'selected' => ''
+        ]);
+    }
+
+    public function select(Request $request)
+    {
+        // Get Mapel
+        $mapels = Mapel::where('id', $request->input('mapel_id'))->get();
+        $mapel = $mapels[0];
+        
+        // Get Semester
+        $semesters = Semester::where('id', $request->input('semester_id'))->get();
+        $semester = $semesters[0];
+        
+        // Get Siswa
+        $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->get();
+        foreach ($siswas as $siswa) {
+            $nilais[] = Nilai::where([
+                ['mapel_id', $mapel->id],
+                ['semester_id', $semester->id],
+                ['siswa_id', $siswa->id],
+            ])->get();
+        }
+        array_shift($nilais);
+
+        // Get Data Nilai
+        $dataNilai = [];
+        foreach ($nilais as $nilai ) {
+            foreach ($nilai as $n) {
+                $dataNilai[] = $n;
+            }
+        }
+
+        // Get Nilai Selected
+        $kelasArray = Kelas::where('id', $request->input('kelas_id'))->get()->toArray();
+        $selected = $kelasArray[0]['kelas'] . " - $mapel->mapel - " .  ucfirst($semester->semester);
+
+        $kelas = Kelas::all();
+        $mapels = Mapel::all();
+        $semesters = Semester::all();
+        return view('dashboard.nilai.index', [
+            'kelas' => $kelas,
+            'mapels' => $mapels,
+            'semesters' => $semesters,
+            'dataNilai' => $nilais ? $dataNilai : [],
+            'selected' => $selected,
+        ]);
     }
 
     /**
