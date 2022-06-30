@@ -83,8 +83,8 @@
                         </form>
                     </div>
                     <div class="table-responsive mt-3">
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-hover table-striped">
+                            <thead class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                 <tr>
                                     <td>#</td>
                                     <td>Nama Kelas</td>
@@ -93,7 +93,7 @@
                                     <td>Opsi</td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="border: 1px solid rgb(169, 167, 167)">
                                 @foreach ($kelas as $kls)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>

@@ -4,7 +4,9 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\RapotController;
 use App\Http\Controllers\SiswaController;
+use App\Models\Rapot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -58,7 +60,10 @@ Route::delete('/mapel/{id}/delete', [MapelController::class, 'destroy'])->name('
 // NILAI
 Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');
 Route::post('/nilai', [NilaiController::class, 'select'])->name('nilai.select');
-Route::get('/nilai/create', [NilaiController::class, 'create'])->name('nilai.create');
 Route::get('/nilai/{id}/show', [NilaiController::class, 'show'])->name('nilai.show');
 Route::get('/nilai/{id}/edit', [NilaiController::class, 'edit'])->name('nilai.edit');
 Route::post('/nilai/{id}/update', [NilaiController::class, 'update'])->name('nilai.update');
+
+// RAPOT
+Route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
+Route::post('/rapot', [RapotController::class, 'select'])->name('rapot.select');

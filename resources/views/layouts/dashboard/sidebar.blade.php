@@ -41,6 +41,10 @@
                 <a class="nav-link text-white" href="{{ route('nilai.index') }}">
                     Nilai
                 </a>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{ route('rapot.index') }}">
+                    Rapot
+                </a>
             </li>
         </ul>
     </div>

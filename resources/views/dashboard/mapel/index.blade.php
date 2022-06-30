@@ -80,9 +80,9 @@
                                 </form>
                             </div>
                             <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                             <td>#</td>
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
@@ -91,7 +91,7 @@
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="border: 1px solid rgb(169, 167, 167)">
                                         <?php $no=1 ?>
                                         @foreach ($mapels as $mapel)
                                             @if ($mapel['kelas'] == "x")
@@ -124,9 +124,9 @@
                                 </form>
                             </div>
                             <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                             <td>#</td>
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
@@ -135,7 +135,7 @@
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="border: 1px solid rgb(169, 167, 167)">
                                         <?php $no=1 ?>
                                         @foreach ($mapels as $mapel)
                                             @if ($mapel['kelas'] == "xi")
@@ -168,9 +168,9 @@
                                 </form>
                             </div>
                             <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                             <td>#</td>
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
@@ -179,7 +179,7 @@
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="border: 1px solid rgb(169, 167, 167)">
                                         <?php $no=1 ?>
                                         @foreach ($mapels as $mapel)
                                             @if ($mapel['kelas'] == "xii")

@@ -19,7 +19,7 @@
             <h5>Tentukan data :</h5>
             {{-- <small>Note* : Ini nanti mungkin di select dlu baru muncul datanya</small> --}}
             <div class="col-md-8">
-                <form action="{{ route('nilai.select') }}" method="post" class="mt-2 px-2">
+                <form action="{{ route('rapot.select') }}" method="post" class="mt-2 px-2">
                     @csrf
                     <div class="d-flex">
                         <div class="mb-1 me-2">
@@ -31,18 +31,10 @@
                             </select>
                         </div>
                         <div class="mb-1 me-2">
-                            <label for="mapel_id" class="form-label">Mata Pelajaran</label>
-                            <select name="mapel_id" id="mapel_id" class="form-select">
-                                @foreach ($mapels as $mapel)
-                                    <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-1 me-2">
                             <label for="semester_id" class="form-label">Semester</label>
                             <select name="semester_id" id="semester_id" class="form-select">
-                                @foreach ($semesters as $semester)
-                                    <option value="{{ $semester->id }}">{{ ucfirst($semester->semester) }}</option>
+                                @foreach ($semester as $smt)
+                                    <option value="{{ $smt->id }}">{{ ucfirst($smt->semester) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -62,12 +54,12 @@
                 </form>
             </div>
             <div class="text-center">
-                <b class="text-center ">{{ $selected }}</b>
+                <b class="text-center ">Tes</b>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover table-striped">
+                <table class="table table-bordered">
                     <thead>
-                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
+                        <tr >
                             <td>#</td>
                             <td>Nama Siswa</td>
                             <td>Pengetahuan</td>
@@ -77,25 +69,10 @@
                             <td>Opsi</td>
                         </tr>
                     </thead>
-                    <tbody style="border: 1px solid rgb(169, 167, 167)">
-                        @forelse ($dataNilai as $nilai)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $nilai->siswa->nama }}</td>
-                                <td>{{ $nilai->pengetahuan }}</td>
-                                <td>{{ $nilai->ketrampilan }}</td>
-                                <td>{{ $nilai->nilai_akhir }}</td>
-                                <td>{{ $nilai->predikat }}</td>
-                                <td class="text-center">
-                                    {{-- <a class="btn btn-primary" href="{{ route('nilai.show', 1) }}"><i class="bi bi-eye"></i></a> --}}
-                                    <a class="btn btn-warning" href="{{ route('nilai.edit', $nilai->id) }}"><i class="bi bi-pencil-square"></i></a>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
-                            </tr>
-                        @endforelse
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

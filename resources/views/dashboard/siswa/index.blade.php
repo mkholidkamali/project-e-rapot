@@ -24,10 +24,10 @@
                     <input type="text" name="search" class="form-control">
                 </form>
             </div>
-            <div class="table-responsive mt-4">
-                <table class="table table-bordered">
+            <div class="table-responsive mt-4" >
+                <table class="table table-hover table-striped" >
                     <thead>
-                        <tr>
+                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                             <td>#</td>
                             <td>NIS</td>
                             <td>Nama Siswa</td>
@@ -40,7 +40,7 @@
                             <td>Opsi</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="border: 1px solid rgb(169, 167, 167)">
                         @foreach ($siswa as $sis)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
