@@ -75,7 +75,7 @@
                                 <td>{{ $rapot->siswa->nis }}</td>
                                 <td>{{ $rapot->siswa->nisn }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-success" href=""><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-success" href=""><i class="bi bi-file-earmark-medical"></i></a>
                                 </td>
                             </tr>
                         @empty

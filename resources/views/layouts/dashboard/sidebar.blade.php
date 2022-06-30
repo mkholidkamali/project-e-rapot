@@ -49,4 +49,3 @@
         </ul>
     </div>
 </nav>
-{{-- {{ Request::is('dashboard') ? 'active' : '' }} --}}
