@@ -18,7 +18,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::orderBy('kelas_id')->get();
+        $siswa = Siswa::orderBy('kelas_id')->orderBy('nama')->get();
         return view('dashboard.siswa.index', [
             'siswa' => $siswa,
         ]);

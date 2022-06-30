@@ -44,7 +44,7 @@ class NilaiController extends Controller
         $semester = $semesters[0];
         
         // Get Siswa
-        $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->get();
+        $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('nama')->get();
         foreach ($siswas as $siswa) {
             $nilais[] = Nilai::where([
                 ['mapel_id', $mapel->id],

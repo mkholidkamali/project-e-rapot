@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <button class="btn btn-dark mt-2 px-4">Pilih</button>
-                    <a href="{{ route('nilai.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
+                    <a href="{{ route('rapot.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
                 </form>
             </div>
 
@@ -54,25 +54,35 @@
                 </form>
             </div>
             <div class="text-center">
-                <b class="text-center ">Tes</b>
+                <b class="text-center ">{{ $selected }}</b>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-hover table-striped">
                     <thead>
-                        <tr >
+                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                             <td>#</td>
                             <td>Nama Siswa</td>
-                            <td>Pengetahuan</td>
-                            <td>Ketrampilan</td>
-                            <td>Nilai akhir</td>
-                            <td>Predikat</td>
-                            <td>Opsi</td>
+                            <td>NIS</td>
+                            <td>NISN</td>
+                            <td class="text-center">Opsi</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
-                        </tr>
+                    <tbody style="border: 1px solid rgb(169, 167, 167)">
+                        @forelse ($rapots as $rapot)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $rapot->siswa->nama }}</td>
+                                <td>{{ $rapot->siswa->nis }}</td>
+                                <td>{{ $rapot->siswa->nisn }}</td>
+                                <td class="text-center">
+                                    <a class="btn btn-success" href=""><i class="bi bi-pencil-square"></i></a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

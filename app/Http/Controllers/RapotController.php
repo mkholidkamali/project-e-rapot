@@ -22,7 +22,9 @@ class RapotController extends Controller
         $semester = Semester::all();
         return view('dashboard.rapot.index', [
             'kelas' => $kelas,
-            'semester' => $semester
+            'semester' => $semester,
+            'rapots' => [],
+            'selected' => ''
         ]);
     }
 
@@ -32,13 +34,28 @@ class RapotController extends Controller
         $semester = Nilai::where('semester_id', $request->input('semester_id'))->first();
 
         // Get Siswa By Kelas
-        $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->get();
+        $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('nama')->get();
         foreach ($siswas as $siswa) {
-            $rapots[] = Rapot::where([
+            $rapots[] = Nilai::where([
                 ['semester_id', $semester->id],
-                ['siswa']
-            ]);
+                ['siswa_id', $siswa->id]
+            ])->first();
         }
+        array_shift($rapots);
+
+        // Selected Data
+        $kelasData = Kelas::where('id', $request->input('kelas_id'))->pluck('kelas');
+        $semester = Semester::where('id', $request->input('semester_id'))->pluck('semester');
+        $selected = $kelasData[0] . " - " . ucfirst($semester[0]);
+        
+        $kelas = Kelas::all();
+        $semester = Semester::all();
+        return view('dashboard.rapot.index', [
+            'kelas' => $kelas,
+            'semester' => $semester,
+            'rapots' => $rapots ? $rapots : [],
+            'selected' => $selected
+        ]);
     }
 
     /**
