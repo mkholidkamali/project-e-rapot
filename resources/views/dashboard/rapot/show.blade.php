@@ -36,12 +36,12 @@
                         <tr>
                             <td>Nama Peserta Didik</td>
                             <td>:</td>
-                            <td><b>Mohamad Kholid Kamali</b></td>
+                            <td><b>{{ $siswa->nama; }}</b></td>
                         </tr>
                         <tr>
                             <td>Nomor Induk/NISN</td>
                             <td>:</td>
-                            <td><b>2019855 / 0033949749</b></td>
+                            <td><b>{{ $siswa->nis }} / {{ $siswa->nisn }}</b></td>
                         </tr>
                     </table>
                 </div>
@@ -50,22 +50,22 @@
                         <tr>
                             <td>Kelas</td>
                             <td>:</td>
-                            <td>X Tel 1</td>
+                            <td>{{ $siswa->kelas->kelas }}</td>
                         </tr>
                         <tr>
                             <td>Semester</td>
                             <td> : </td>
-                            <td>1 / Ganjil</td>
+                            <td>{{ $nilaiData->semester_id }} / {{ ucfirst($nilaiData->semester->semester) }}</td>
                         </tr>
                         <tr>
                             <td>Tahun ajaran</td>
                             <td>:</td>
-                            <td>2019 / 2020</td>
+                            <td>{{ $siswa->tahun_ajaran }}</td>
                         </tr>
                         <tr>
-                            <td>ID / No. Absen</td>
+                            <td>No Absen</td>
                             <td>:</td>
-                            <td>024 / 324</td>
+                            <td>{{ $siswa->absen }}</td>
                         </tr>
                     </table>
                 </div>
@@ -89,29 +89,31 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($nilais as $nilai)
                             <tr class="text-center">
-                                <td>1</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td style="padding: 0px 11px;" class="text-start">
                                     <div class="py-2">
-                                        Matematika Terapan
+                                        {{ $nilai->mapel->mapel }}
                                     </div>
                                     <hr style="margin: 0% -11px; border: 1px solid black;">
                                     <div style="margin: 0%;">
-                                        <i>Anthonio De Caprio</i>
+                                        <i>{{ $nilai->mapel->guru->name }}</i>
                                     </div>
                                 </td>
-                                <td>75</td>
-                                <td>90</td>
-                                <td>91</td>
-                                <td>91</td>
-                                <td>A</td>
+                                <td>{{ $nilai->kkm }}</td>
+                                <td>{{ $nilai->pengetahuan }}</td>
+                                <td>{{ $nilai->ketrampilan }}</td>
+                                <td>{{ $nilai->nilai_akhir }}</td>
+                                <td>{{ $nilai->predikat }}</td>
                             </tr>
+                            @endforeach
                             <tr class="text-center" style="background-color: lightgray">
                                 <td colspan="3"><b>RATAAN</b></td>
-                                <td><b>75</b></td>
-                                <td><b>90</b></td>
-                                <td><b>91</b></td>
-                                <td><b>A</b></td>
+                                <td><b>{{ $nilaiData->rapot->rata_pengetahuan }}</b></td>
+                                <td><b>{{ $nilaiData->rapot->rata_ketrampilan }}</b></td>
+                                <td><b>{{ $nilaiData->rapot->rata_nilai_akhir }}</b></td>
+                                <td><b>{{ $nilaiData->rapot->rata_predikat }}</b></td>
                             </tr>
                         </tbody>
                     </table>

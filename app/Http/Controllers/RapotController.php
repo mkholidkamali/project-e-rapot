@@ -87,7 +87,21 @@ class RapotController extends Controller
      */
     public function show($id)
     {
-        return view('dashboard.rapot.show');
+        // Get Siswa Data
+        $nilaiData = Nilai::where('id', $id)->first();
+        $siswa = Siswa::where('id', $nilaiData->siswa_id)->first();
+
+        // Get Nilai Data
+        $nilais = Nilai::where([
+            ['siswa_id', $siswa->id],
+            ['semester_id', $nilaiData->semester_id],
+        ])->get();
+
+        return view('dashboard.rapot.show', [
+            'siswa' => $siswa,
+            'nilaiData' => $nilaiData,
+            'nilais' => $nilais,
+        ]);
     }
 
     /**

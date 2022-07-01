@@ -150,6 +150,58 @@ class NilaiController extends Controller
 
         Nilai::where('id', $id)->update($data);
 
+        // Get ID Rapot from ID Nilai
+        $dataRapot = Nilai::where('id', $id)->first();
+        // Select All nilai by ID Rapot
+        $rapots = Nilai::where([
+            ['siswa_id', $dataRapot->siswa_id],
+            ['rapot_id', $dataRapot->rapot_id]
+        ])->get();
+
+        // Count Average
+        foreach ($rapots as $rapot) {
+            $nilaiPengetahuan[] = $rapot->pengetahuan;
+            $nilaiKetrampilan[] = $rapot->ketrampilan;
+            $nilaiAkhir[] = $rapot->nilai_akhir;
+        }
+        // Pengetahuan
+        $hasilPengetahuan = 0;
+        foreach ($nilaiPengetahuan as $pengetahuan) {
+            $hasilPengetahuan += $pengetahuan;
+        }
+        $rataPengetahuan = round($hasilPengetahuan / count($nilaiPengetahuan));
+        // Ketrampilan
+        $hasilKetrampilan = 0;
+        foreach ($nilaiKetrampilan as $ketrampilan) {
+            $hasilKetrampilan += $ketrampilan;
+        }
+        $rataKetrampilan = round($hasilKetrampilan / count($nilaiKetrampilan));
+        // Nilai Akhir
+        $hasilAkhir = 0;
+        foreach ($nilaiAkhir as $akhir) {
+            $hasilAkhir += $akhir;
+        }
+        $rataAkhir = round($hasilAkhir / count($nilaiAkhir));
+        // Predikat
+        if ($rataAkhir >= 85 && $rataAkhir <= 100) {
+            $predikat = "A";
+        } else if ($rataAkhir >= 75 && $rataAkhir <= 84) {
+            $predikat = "B";
+        } else if ($rataAkhir >= 60 && $rataAkhir <= 74) {
+            $predikat = "C";
+        } else {
+            $predikat = "D";
+        }
+
+        // Input Rapot
+        $dataHasilRapot = [
+            'rata_pengetahuan' => $rataPengetahuan,
+            'rata_ketrampilan' => $rataKetrampilan,
+            'rata_nilai_akhir' => $rataAkhir,
+            'rata_predikat' => $predikat,
+        ];
+        Rapot::where('id', $dataRapot->rapot_id)->update($dataHasilRapot);
+
         return redirect(route('nilai.index'))->with('success', 'Berhasil mengubah nilai');
     }
 

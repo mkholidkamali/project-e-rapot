@@ -15,4 +15,9 @@ class Mapel extends Model
     {
         return $this->belongsTo(Guru::class);
     }
+
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class);
+    }
 }

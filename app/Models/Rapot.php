@@ -10,4 +10,9 @@ class Rapot extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function nilai()
+    {
+        return $this->belongsTo(Nilai::class);
+    }
 }

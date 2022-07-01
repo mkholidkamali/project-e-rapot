@@ -15,4 +15,19 @@ class Nilai extends Model
     {
         return $this->belongsTo(Siswa::class);
     }
+
+    public function semester()
+    {
+        return $this->belongsTo(Semester::class);
+    }
+
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class);
+    }
+
+    public function rapot()
+    {
+        return $this->belongsTo(Rapot::class);
+    }
 }

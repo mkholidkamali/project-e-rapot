@@ -10,4 +10,9 @@ class Semester extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function nilai()
+    {
+        return $this->belongsTo(Nilai::class);
+    }
 }
