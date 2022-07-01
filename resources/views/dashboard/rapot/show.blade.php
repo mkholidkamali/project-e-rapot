@@ -106,10 +106,23 @@
                                 <td>91</td>
                                 <td>A</td>
                             </tr>
+                            <tr class="text-center" style="background-color: lightgray">
+                                <td colspan="3"><b>RATAAN</b></td>
+                                <td><b>75</b></td>
+                                <td><b>90</b></td>
+                                <td><b>91</b></td>
+                                <td><b>A</b></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <b>B. CATATAN AKADEMIK</b>
+                <div style="border: 2px solid black" class="p-3">
+                    <p style="text-align: justify">
+                        &nbsp;&nbsp; &nbsp;&nbsp;
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. In assumenda aliquid quos ipsam commodi rem laudantium eveniet, velit sed sapiente officiis ut, repellendus aliquam aspernatur necessitatibus vero! Asperiores mollitia numquam illum deleniti nesciunt assumenda doloremque animi ratione tempora quisquam, quos et iste facilis exercitationem ipsa impedit laboriosam non sapiente at quas ipsum iusto amet quia. Nemo sint iusto est consectetur id accusamus asperiores quaerat atque a perspiciatis, similique quibusdam eveniet natus, magnam delectus neque eos. Nostrum ullam doloribus quis asperiores et cupiditate hic voluptatem placeat laborum sapiente sint, dolor illum saepe est. Asperiores aut porro eligendi nihil vero architecto ipsam.
+                    </p>
+                </div>
             </div>
 
         </div>
