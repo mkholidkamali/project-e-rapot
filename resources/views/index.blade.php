@@ -74,7 +74,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card">
-                <div class="card-body d-flex justify-content-between bg-info">
+                <div class="card-body d-flex justify-content-between bg-secondary">
                     <div class="text-white">
                         <h5>1</h5>
                         Jumlah Admin

@@ -67,3 +67,4 @@ Route::post('/nilai/{id}/update', [NilaiController::class, 'update'])->name('nil
 // RAPOT
 Route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
 Route::post('/rapot', [RapotController::class, 'select'])->name('rapot.select');
+Route::get('/rapot/{id}/show', [RapotController::class, 'show'])->name('rapot.show');

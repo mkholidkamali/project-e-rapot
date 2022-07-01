@@ -87,7 +87,7 @@ class RapotController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('dashboard.rapot.show');
     }
 
     /**
