@@ -46,6 +46,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'absen' => ['required', 'integer'],
             'nis' => ['required', 'integer', 'unique:siswas'],
             'nisn' => ['required', 'integer', 'unique:siswas'],
             'nama' => ['required'],
@@ -154,6 +155,7 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
+            'absen' => ['required', 'integer'],
             'nis' => ['required', 'integer', 'unique:siswas'],
             'nisn' => ['required', 'integer', 'unique:siswas'],
             'nama' => ['required'],

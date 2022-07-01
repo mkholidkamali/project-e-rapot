@@ -14,6 +14,13 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-2">
+                    <label for="absen" class="form-label">No Absen</label>
+                    <input type="number" class="form-control @error('absen') is-invalid @enderror" name="absen" id="absen" maxlength="2" value="{{ $siswa->absen, old('absen') }}">
+                    @error('absen')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-2">
                     <label for="nis" class="form-label">NIS</label>
                     <input type="number" class="form-control @error('nis') is-invalid @enderror" name="nis" id="nis" maxlength="8" value="{{ $siswa->nis, old('nis') }}">
                     @error('nis')

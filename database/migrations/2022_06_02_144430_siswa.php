@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->foreignId('kelas_id')->constrained();
 
+            $table->integer('absen');
             $table->string('nis', 10)->unique();
             $table->string('nisn', 12)->unique();
             $table->string('nama');

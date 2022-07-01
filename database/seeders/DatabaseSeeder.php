@@ -85,6 +85,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Siswa::create([
             'kelas_id' => 1,
+            'absen' => 1,
             'nis' => '20191234',
             'nisn' => '728198208',
             'nama' => 'Anthon Fajri',
@@ -94,6 +95,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Siswa::create([
             'kelas_id' => 2,
+            'absen' => 1,
             'nis' => '20195678',
             'nisn' => '928728188',
             'nama' => 'Britania Ramadhan',
@@ -103,6 +105,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Siswa::create([
             'kelas_id' => 3,
+            'absen' => 1,
             'nis' => '20199101',
             'nisn' => '123837493',
             'nama' => 'Chris Budiman',
