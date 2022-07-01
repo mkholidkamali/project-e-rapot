@@ -71,6 +71,7 @@
                     <label for="foto" class="form-label">Foto</label>
                     <input type="file" class="form-control" name="foto" id="foto">
                 </div>
+                <input type="hidden" name="tahun_ajaran" value="{{ date('Y') . " / " . date('Y', strtotime('+1 year')) }}">
                 <button type="submit" class="btn btn-success mt-2">Tambah Siswa</button>
             </form>
         </div>

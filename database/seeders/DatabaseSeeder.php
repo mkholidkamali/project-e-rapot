@@ -91,7 +91,8 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Anthon Fajri',
             'jenis_kelamin' => 'l',
             'agama' => 'islam',
-            'foto' => 'profile/guru/profile.webp'
+            'foto' => 'profile/guru/profile.webp',
+            'tahun_ajaran' => '2022 / 2023',
         ]);
         Siswa::create([
             'kelas_id' => 2,
@@ -101,7 +102,8 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Britania Ramadhan',
             'jenis_kelamin' => 'l',
             'agama' => 'islam',
-            'foto' => 'profile/guru/profile.webp'
+            'foto' => 'profile/guru/profile.webp',
+            'tahun_ajaran' => '2022 / 2023',
         ]);
         Siswa::create([
             'kelas_id' => 3,
@@ -111,7 +113,8 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Chris Budiman',
             'jenis_kelamin' => 'l',
             'agama' => 'kapro',
-            'foto' => 'profile/guru/profile.webp'
+            'foto' => 'profile/guru/profile.webp',
+            'tahun_ajaran' => '2022 / 2023',
         ]);
         Mapel::create([
             'guru_id' => 1,

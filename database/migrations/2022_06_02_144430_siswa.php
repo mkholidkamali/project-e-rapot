@@ -25,6 +25,7 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['l', 'p']);
             $table->enum('agama', ['islam', 'kapro', 'kakat', 'budha', 'hindu']);
             $table->string('foto');
+            $table->string('tahun_ajaran');
             $table->timestamps();
         });
     }

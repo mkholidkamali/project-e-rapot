@@ -53,6 +53,7 @@ class SiswaController extends Controller
             'kelas_id' => ['required'],
             'jenis_kelamin' => ['required'],
             'agama' => ['required'],
+            'tahun_ajaran' => ['required']
         ]);
         $data['foto'] = 'profile/guru/profile.webp';
         Siswa::create($data);
@@ -166,7 +167,7 @@ class SiswaController extends Controller
         $data['foto'] = 'profile/guru/profile.webp';
         Siswa::where('id', $id)->update($data);
 
-        return redirect(route('siswa.index'))->with('success', 'Berhasil menambah siswa');
+        return redirect(route('siswa.index'))->with('success', 'Berhasil mengubah siswa');
     }
 
     /**
