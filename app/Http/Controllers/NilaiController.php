@@ -176,12 +176,36 @@ class NilaiController extends Controller
             $hasilKetrampilan += $ketrampilan;
         }
         $rataKetrampilan = round($hasilKetrampilan / count($nilaiKetrampilan));
-        // Nilai Akhir
+
+        // Nilai Akhir + Min Max
         $hasilAkhir = 0;
+        $nilai_mapel_tertinggi = 0;
+        $nilai_mapel_terendah = 100;
         foreach ($nilaiAkhir as $akhir) {
             $hasilAkhir += $akhir;
+            // Get Min Max
+            if ($akhir > $nilai_mapel_tertinggi) {
+                $nilai_mapel_tertinggi = $akhir;
+            }
+            if ($akhir <= $nilai_mapel_terendah) {
+                $nilai_mapel_terendah = $akhir;
+            }
         }
         $rataAkhir = round($hasilAkhir / count($nilaiAkhir));
+
+        // Get Mapel Min
+        $min = Nilai::where([
+            ['siswa_id', $dataRapot->siswa_id],
+            ['nilai_akhir', $nilai_mapel_terendah]
+        ])->first();
+        $mapel_terendah = Mapel::where('id', $min->mapel_id)->pluck('mapel')->first();
+        // Get Mapel Max
+        $max = Nilai::where([
+            ['siswa_id', $dataRapot->siswa_id],
+            ['nilai_akhir', $nilai_mapel_tertinggi]
+        ])->first();
+        $mapel_tertinggi = Mapel::where('id', $max->mapel_id)->pluck('mapel')->first();
+
         // Predikat
         if ($rataAkhir >= 85 && $rataAkhir <= 100) {
             $predikat = "A";
@@ -199,6 +223,10 @@ class NilaiController extends Controller
             'rata_ketrampilan' => $rataKetrampilan,
             'rata_nilai_akhir' => $rataAkhir,
             'rata_predikat' => $predikat,
+            'nilai_mapel_terendah' => $nilai_mapel_terendah,
+            'mapel_terendah' => $mapel_terendah,
+            'nilai_mapel_tertinggi' => $nilai_mapel_tertinggi,
+            'mapel_tertinggi' => $mapel_tertinggi,
         ];
         Rapot::where('id', $dataRapot->rapot_id)->update($dataHasilRapot);
 

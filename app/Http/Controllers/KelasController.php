@@ -43,7 +43,7 @@ class KelasController extends Controller
     {
         $data = $request->validate([
             "kelas" => ['required'],
-            'guru_id' => ['required', 'unique:kelas'],
+            'guru_id' => ['required'],
             'jurusan' => ['required'],
         ]);
         $data['kelas'] = $data['kelas'] . " " . $request->input('nama-kelas');
