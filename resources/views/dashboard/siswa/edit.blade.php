@@ -73,7 +73,10 @@
                 </div>
                 <div class="mb-2">
                     <label for="foto" class="form-label">Foto</label>
-                    <input type="file" class="form-control" name="foto" id="foto">
+                    <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" id="foto">
+                    @error('foto')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-warning mt-2">Edit Siswa</button>
             </form>

@@ -69,7 +69,10 @@
                 </div>
                 <div class="mb-2">
                     <label for="foto" class="form-label">Foto</label>
-                    <input type="file" class="form-control" name="foto" id="foto">
+                    <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" id="foto">
+                    @error('foto')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <input type="hidden" name="tahun_ajaran" value="{{ date('Y') . " / " . date('Y', strtotime('+1 year')) }}">
                 <button type="submit" class="btn btn-success mt-2">Tambah Siswa</button>

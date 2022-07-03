@@ -36,7 +36,7 @@
                             <td>Jenis Kelamin</td>
                             <td>Agama</td>
                             <td>NISN</td>
-                            <td>Foto</td>
+                            <td>Foto</td> 
                             <td>Opsi</td>
                         </tr>
                     </thead>
@@ -52,7 +52,7 @@
                             <td>{{ strtoupper($sis->agama) }}</td>
                             <td>{{ $sis->nisn }}</td>
                             <td>
-                                <img src="{{ 'storage/' . $sis->foto  }}" class="" width="50px">
+                                <img src="{{ 'storage/' . $sis->foto  }}" class="" width="50vh"  alt="{{ $sis->foto }}">
                             </td>
                             <td class="text-center">
                                 <a class="btn btn-primary" href="{{ route('siswa.show', $sis->id) }}"><i class="bi bi-eye"></i></a>

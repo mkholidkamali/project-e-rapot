@@ -8,6 +8,7 @@ use App\Models\Nilai;
 use App\Models\Rapot;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -53,9 +54,10 @@ class SiswaController extends Controller
             'kelas_id' => ['required'],
             'jenis_kelamin' => ['required'],
             'agama' => ['required'],
-            'tahun_ajaran' => ['required']
+            'tahun_ajaran' => ['required'],
+            'foto' => ['required', 'mimes:jpeg, jpg']
         ]);
-        $data['foto'] = 'profile/guru/profile.webp';
+        $data['foto'] = $request->file('foto')->storeAs('profile/siswa', $data['nis'] . '.jpg');
         Siswa::create($data);
 
         // RAPOT
@@ -157,14 +159,16 @@ class SiswaController extends Controller
     {
         $data = $request->validate([
             'absen' => ['required', 'integer'],
-            'nis' => ['required', 'integer', 'unique:siswas'],
-            'nisn' => ['required', 'integer', 'unique:siswas'],
+            'nis' => ['required', 'integer'], // 'unique:siswas'
+            'nisn' => ['required', 'integer'], // 'unique:siswas'
             'nama' => ['required'],
             'kelas_id' => ['required'],
             'jenis_kelamin' => ['required'],
             'agama' => ['required'],
+            'foto' => ['required', 'mimes:jpeg, jpg']
         ]);
-        $data['foto'] = 'profile/guru/profile.webp';
+        Storage::disk('public')->delete($data['nis'] . '.jpg');
+        $data['foto'] = $request->file('foto')->storeAs('profile/siswa', $data['nis'] . '.jpg');
         Siswa::where('id', $id)->update($data);
 
         return redirect(route('siswa.index'))->with('success', 'Berhasil mengubah siswa');
@@ -178,7 +182,14 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
+        // Get Data
         $nilais = Nilai::where('siswa_id', $id)->get();
+        $foto = Nilai::where('siswa_id', $id)->first();
+
+        // Delete Image
+        Storage::disk('public')->delete($foto->siswa->foto);
+
+        // Delete Nilai & Rapot
         foreach ($nilais as $nilai) {
             Rapot::destroy($nilai->rapot_id);
             Nilai::destroy($nilai->id);
