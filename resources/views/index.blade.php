@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between bg-primary">
                     <div class="text-white">
-                        <h5>36</h5>
+                        <h5>{{ $guru }}</h5>
                         Jumlah Guru
                     </div>
                     <div>
@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between bg-danger">
                     <div class="text-white">
-                        <h5>11</h5>
+                        <h5>{{ $kelasX }}</h5>
                         Jumlah Kelas X
                     </div>
                     <div>
@@ -37,7 +37,7 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between bg-danger">
                     <div class="text-white">
-                        <h5>12</h5>
+                        <h5>{{ $kelasXI }}</h5>
                         Jumlah Kelas XI
                     </div>
                     <div>
@@ -50,7 +50,7 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between bg-danger">
                     <div class="text-white">
-                        <h5>13</h5>
+                        <h5>{{ $kelasXII }}</h5>
                         Jumlah Kelas XII
                     </div>
                     <div>
@@ -63,7 +63,7 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between bg-success">
                     <div class="text-white">
-                        <h5>200</h5>
+                        <h5>{{ $siswa }}</h5>
                         Jumlah Siswa
                     </div>
                     <div>

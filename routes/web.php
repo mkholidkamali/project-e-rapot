@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
@@ -24,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('index');
-});
+
+// DASHBOARD
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // GURU
 Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');

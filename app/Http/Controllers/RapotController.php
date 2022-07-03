@@ -37,7 +37,7 @@ class RapotController extends Controller
         $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('nama')->get();
         foreach ($siswas as $siswa) {
             $rapots[] = Nilai::where([
-                ['semester_id', $semester->id],
+                ['semester_id', $semester->semester_id],
                 ['siswa_id', $siswa->id]
             ])->first();
         }
