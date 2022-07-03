@@ -206,6 +206,9 @@ class NilaiController extends Controller
         ])->first();
         $mapel_tertinggi = Mapel::where('id', $max->mapel_id)->pluck('mapel')->first();
 
+        // Create Catatan Akademik
+        $catatan = "Selamat kepada Ananda " . $dataRapot->siswa->nama . " mendapatkan skor kompetensi pengetahuan dan ketrampilan tertinggi dengan nilai akhir " . $nilai_mapel_tertinggi . " pada mata pelajaran " . $mapel_tertinggi . ". Tingkatkan terus kompetensi pengetahuan dari ketrampilan Ananda pada mata pelajaran tersebut. Tidak lupa pula Ananda " . $dataRapot->siswa->nama . " perlu meningkatkan kompetensi pengetahuan dan ketrampilan mata pelajaran lain seperti " . $mapel_terendah . " yang jika diperhatikan memiliki skor yang sama atau terpaut kurang lebih beberapa point diatas atau dibawah SKM. Jadikan hal ini motivasi belajar Ananda " . $dataRapot->siswa->nama . " untuk meningkatkan prestasi Ananda di semester selanjutnya dengan menambah fokus ananda pada mata pelajar yang menurut ananda sulit.";
+
         // Predikat
         if ($rataAkhir >= 85 && $rataAkhir <= 100) {
             $predikat = "A";
@@ -223,6 +226,7 @@ class NilaiController extends Controller
             'rata_ketrampilan' => $rataKetrampilan,
             'rata_nilai_akhir' => $rataAkhir,
             'rata_predikat' => $predikat,
+            'catatan_akademik' => $catatan,
             'nilai_mapel_terendah' => $nilai_mapel_terendah,
             'mapel_terendah' => $mapel_terendah,
             'nilai_mapel_tertinggi' => $nilai_mapel_tertinggi,
