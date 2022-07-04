@@ -1,0 +1,1 @@
+<?php /**PATH C:\wamp64\www\Project\TelkomSchool\projek-raport\resources\views/layouts/partials/sidenav.blade.php ENDPATH**/ ?>
