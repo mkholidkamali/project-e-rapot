@@ -16,15 +16,10 @@ class GuruController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $guru =  DB::table('guru')->get();
-        	return view('dashboard.guru.index',['guru' => $guru]);
-=======
         $gurus = Guru::all();
         return view('dashboard.guru.index', [
             'gurus' => $gurus
         ]);
->>>>>>> e976e12bb39b1f0bbbc8a38c16379ce537bce892
     }
 
     /**
@@ -46,15 +41,6 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        DB::table('guru')->insert([
-            'no_induk' => $request->no_induk,
-            'nama_guru' => $request->nama_guru
-           
-        ]);
-
-        return redirect('/guru');
-=======
         // Validate Input
         $dataGuru = $request->validate([
             'no_induk' => ['required', 'unique:gurus'],
@@ -77,7 +63,6 @@ class GuruController extends Controller
         User::create($accountGuru);
 
         return redirect(route('guru.index'))->with('success', 'Berhasil menambah Guru');
->>>>>>> e976e12bb39b1f0bbbc8a38c16379ce537bce892
     }
 
     /**
@@ -88,9 +73,10 @@ class GuruController extends Controller
      */
     public function show($id) 
     {
-        $guru =  DB::table('guru')->where('id',$id)->get();
-        	return view('dashboard.guru.show',['guru' => $guru]);
-        
+        $guru = Guru::where('id', $id)->first();
+        return view('dashboard.guru.show', [
+            'guru' => $guru
+        ]);
     }
 
     /**
