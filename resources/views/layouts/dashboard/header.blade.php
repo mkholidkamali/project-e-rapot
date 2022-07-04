@@ -3,14 +3,22 @@
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-center" href="#" style="background-color: #B72024">E-Rapot</a>
     <div class="nav-item dropdown me-3">
         <a id="navbarDropdown" class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            User
+            {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="">
                 Profile
             </a>
             <a class="dropdown-item" href="">
-                Logout
+                <a class="dropdown-item" href="{{ route('logout') }}" 
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"
+                > {{ __('Logout') }}
+                </a>
+    
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </a>
         </div>
     </div>

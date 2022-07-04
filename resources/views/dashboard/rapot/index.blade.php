@@ -19,7 +19,7 @@
             <h5>Tentukan data :</h5>
             {{-- <small>Note* : Ini nanti mungkin di select dlu baru muncul datanya</small> --}}
             <div class="col-md-8">
-                <form action="{{ route('nilai.select') }}" method="post" class="mt-2 px-2">
+                <form action="{{ route('rapot.select') }}" method="post" class="mt-2 px-2">
                     @csrf
                     <div class="d-flex">
                         <div class="mb-1 me-2">
@@ -31,24 +31,16 @@
                             </select>
                         </div>
                         <div class="mb-1 me-2">
-                            <label for="mapel_id" class="form-label">Mata Pelajaran</label>
-                            <select name="mapel_id" id="mapel_id" class="form-select">
-                                @foreach ($mapels as $mapel)
-                                    <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-1 me-2">
                             <label for="semester_id" class="form-label">Semester</label>
                             <select name="semester_id" id="semester_id" class="form-select">
-                                @foreach ($semesters as $semester)
-                                    <option value="{{ $semester->id }}">{{ ucfirst($semester->semester) }}</option>
+                                @foreach ($semester as $smt)
+                                    <option value="{{ $smt->id }}">{{ ucfirst($smt->semester) }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <button class="btn btn-dark mt-2 px-4">Pilih</button>
-                    <a href="{{ route('nilai.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
+                    <a href="{{ route('rapot.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
                 </form>
             </div>
 
@@ -70,25 +62,20 @@
                         <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                             <td>#</td>
                             <td>Nama Siswa</td>
-                            <td>Pengetahuan</td>
-                            <td>Ketrampilan</td>
-                            <td>Nilai akhir</td>
-                            <td>Predikat</td>
-                            <td>Opsi</td>
+                            <td>NIS</td>
+                            <td>NISN</td>
+                            <td class="text-center">Opsi</td>
                         </tr>
                     </thead>
                     <tbody style="border: 1px solid rgb(169, 167, 167)">
-                        @forelse ($dataNilai as $nilai)
+                        @forelse ($rapots as $rapot)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $nilai->siswa->nama }}</td>
-                                <td>{{ $nilai->pengetahuan }}</td>
-                                <td>{{ $nilai->ketrampilan }}</td>
-                                <td>{{ $nilai->nilai_akhir }}</td>
-                                <td>{{ $nilai->predikat }}</td>
+                                <td>{{ $rapot->siswa->nama }}</td>
+                                <td>{{ $rapot->siswa->nis }}</td>
+                                <td>{{ $rapot->siswa->nisn }}</td>
                                 <td class="text-center">
-                                    {{-- <a class="btn btn-primary" href="{{ route('nilai.show', 1) }}"><i class="bi bi-eye"></i></a> --}}
-                                    <a class="btn btn-warning" href="{{ route('nilai.edit', $nilai->id) }}"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-success" href="{{ route('rapot.show', $rapot->id) }}" target="_blank"><i class="bi bi-file-earmark-medical"></i></a>
                                 </td>
                             </tr>
                         @empty

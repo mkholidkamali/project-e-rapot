@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -13,7 +15,12 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('dashboard.kelas.index');
+        $gurus = Guru::all();
+        $kelas = Kelas::all();
+        return view('dashboard.kelas.index', [
+            'gurus' => $gurus,
+            'kelas' => $kelas,
+        ]);
     }
 
     /**
@@ -34,7 +41,14 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "kelas" => ['required'],
+            'guru_id' => ['required'],
+            'jurusan' => ['required'],
+        ]);
+        $data['kelas'] = $data['kelas'] . " " . $request->input('nama-kelas');
+        Kelas::create($data);
+        return back()->with('success', 'Berhasil membuat kelas');
     }
 
     /**
@@ -56,7 +70,12 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.kelas.edit');
+        $gurus = Guru::all();
+        $kelas = Kelas::find($id);
+        return view('dashboard.kelas.edit', [
+            'gurus' => $gurus,
+            'kelas' => $kelas,
+        ]);
     }
 
     /**
@@ -68,7 +87,14 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            "kelas" => ['required'],
+            'guru_id' => ['required'],
+            'jurusan' => ['required'],
+        ]);
+        $data['kelas'] = $data['kelas'] . " " . $request->input('nama-kelas');
+        Kelas::where('id', $id)->update($data);
+        return redirect(route('kelas.index'))->with('success', 'Berhasil mengedit kelas');
     }
 
     /**
@@ -79,6 +105,7 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kelas::destroy($id);
+        return back()->with('success', 'Berhasil menghapus data');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
+use App\Models\Mapel;
 use Illuminate\Http\Request;
 
 class MapelController extends Controller
@@ -13,7 +15,12 @@ class MapelController extends Controller
      */
     public function index()
     {
-        return view('dashboard.mapel.index');
+        $mapels = Mapel::all();
+        $gurus = Guru::all();
+        return view('dashboard.mapel.index', [
+            'mapels' => $mapels,
+            'gurus' => $gurus,
+        ]);
     }
 
     /**
@@ -34,7 +41,14 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate($request, [
+            "guru_id" => ['required'],
+            "mapel" => ['required'],
+            "kelas" => ['required'],
+            "jurusan" => ['required'],
+        ]);
+        Mapel::create($data);
+        return back()->with('success', 'Berhasil tambah Mapel');
     }
 
     /**
@@ -56,7 +70,12 @@ class MapelController extends Controller
      */
     public function edit($id)
     {
-        return view("dashboard.mapel.edit");
+        $mapel = Mapel::find($id);
+        $gurus = Guru::all();
+        return view("dashboard.mapel.edit", [
+            'mapel' => $mapel,
+            'gurus' => $gurus
+        ]);
     }
 
     /**
@@ -68,7 +87,14 @@ class MapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'guru_id' => ['required'],
+            'mapel' => ['required'],
+            'kelas' => ['required'],
+            "jurusan" => ['required'],
+        ]);
+        Mapel::where('id', $id)->update($data);
+        return redirect(route('mapel.index'))->with('success', "Berhasil mengupdate mapel");
     }
 
     /**
@@ -79,6 +105,7 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Mapel::destroy($id);
+        return back()->with('success', 'Berhasil mendelete mapel');
     }
 }

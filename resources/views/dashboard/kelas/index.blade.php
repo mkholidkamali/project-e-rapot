@@ -3,7 +3,14 @@
 
 @section('main')
 
-    <h1 class="mt-3">Kelas</h1>
+    <div class="d-flex ">
+        <h1 class="mt-3 align-items-center">Kelas</h1>
+        @if (session('success'))
+            <div class="alert alert-success my-auto ms-3 py-2 mt-4" role="alert">
+                {!! session('success') !!}
+            </div>
+        @endif
+    </div>
     <hr>
 
     <div class="row">
@@ -11,83 +18,57 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active text-dark" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Kelas X</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link text-dark" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Kelas XI</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link text-dark" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Kelas XII</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                            <form action="" method="post" class="mt-2 px-2">
-                                <div class="mb-2">
-                                    <label for="kelas" class="form-label">Nama Kelas</label>
-                                    <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
-                                        <option value="x">X Tel 1</option>
-                                        <option value="x">X Tel 2</option>
-                                        <option value="x">X Tel 3</option>
-                                    </select>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="wali-kelas" class="form-label">Wali Kelas</label>
-                                    <select class="form-select" aria-label="Default select example" name="wali-kelas" id="kelas">
-                                        <option value="">Anthoni</option>
-                                        <option value="">Brodi</option>
-                                        <option value="">Cahyano</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn-dark mt-2">Tambah Kelas</button>
-                            </form>
+                    <form action="{{ route('kelas.store') }}" method="post" class="mt-2 px-2">
+                        @csrf
+                        <div class="row mb-2">
+                            <label for="kelas" class="form-label">Nama Kelas</label>
+                            <div class="col-md-4">
+                                <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
+                                    <option value="X">X</option>
+                                    <option value="XI">XI</option>
+                                    <option value="XII">XII</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <select class="form-select" aria-label="Default select example" name="nama-kelas" id="nama-kelas">
+                                    <option value="Tel 1">Tel 1</option>
+                                    <option value="Tel 2">Tel 2</option>
+                                    <option value="Tel 3">Tel 3</option>
+                                    <option value="Tel 4">Tel 4</option>
+                                    <option value="Tel 5">Tel 5</option>
+                                    <option value="Tel 6">Tel 6</option>
+                                    <option value="Tel 7">Tel 7</option>
+                                    <option value="Tel 8">Tel 8</option>
+                                    <option value="Tel 9">Tel 9</option>
+                                    <option value="Tel 10">Tel 10</option>
+                                    <option value="Tel 11">Tel 11</option>
+                                    <option value="Tel 12">Tel 12</option>
+                                    <option value="Tel 13">Tel 13</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                            <form action="" method="post" class="mt-2 px-2">
-                                <div class="mb-2">
-                                    <label for="kelas" class="form-label">Nama Kelas</label>
-                                    <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
-                                        <option value="x">XI Tel 1</option>
-                                        <option value="x">XI Tel 2</option>
-                                        <option value="x">XI Tel 3</option>
-                                    </select>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="wali-kelas" class="form-label">Wali Kelas</label>
-                                    <select class="form-select" aria-label="Default select example" name="wali-kelas" id="kelas">
-                                        <option value="">Anthoni</option>
-                                        <option value="">Brodi</option>
-                                        <option value="">Cahyano</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn-dark mt-2">Tambah Kelas</button>
-                            </form>
+                        <div class="mb-2">
+                            <label for="guru_id" class="form-label">Wali Kelas</label>
+                            <select class="form-select @error('guru_id') is-invalid  @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
+                                @foreach ($gurus as $guru)
+                                    <option value="{{ $guru->id }}">{{ $guru->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('guru_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                            <form action="" method="post" class="mt-2 px-2">
-                                <div class="mb-2">
-                                    <label for="kelas" class="form-label">Nama Kelas</label>
-                                    <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
-                                        <option value="x">XII Tel 1</option>
-                                        <option value="x">XII Tel 2</option>
-                                        <option value="x">XII Tel 3</option>
-                                    </select>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="wali-kelas" class="form-label">Wali Kelas</label>
-                                    <select class="form-select" aria-label="Default select example" name="wali-kelas" id="kelas">
-                                        <option value="">Anthoni</option>
-                                        <option value="">Brodi</option>
-                                        <option value="">Cahyano</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn-dark mt-2">Tambah Kelas</button>
-                            </form>
+                        <div class="mb-2">
+                            <label for="jurusan" class="form-label">Jurusan</label>
+                            <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
+                                <option value="tra">TRA</option>
+                                <option value="tja">TJA</option>
+                                <option value="tkj">TKJ</option>
+                                <option value="rpl">RPL</option>
+                            </select>
                         </div>
-                    </div>
+                        <button class="btn btn-dark mt-2">Tambah Kelas</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -102,25 +83,33 @@
                         </form>
                     </div>
                     <div class="table-responsive mt-3">
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-hover table-striped">
+                            <thead class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                 <tr>
                                     <td>#</td>
                                     <td>Nama Kelas</td>
+                                    <td>Jurusan</td>
                                     <td>Wali Kelas</td>
                                     <td>Opsi</td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="border: 1px solid rgb(169, 167, 167)">
+                                @foreach ($kelas as $kls)
                                 <tr>
-                                    <td>1</td>
-                                    <td>XII Tel 14</td>
-                                    <td>Cahyano</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kls->kelas }}</td>
+                                    <td>{{ strtoupper($kls->jurusan) }}</td>
+                                    <td>{{ $kls->guru->name }}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-warning" href="{{ route('kelas.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
-                                        <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                        <a class="btn btn-warning" href="{{ route('kelas.edit', $kls->id) }}"><i class="bi bi-pencil-square"></i></a>
+                                        <form action="{{ route('kelas.destroy', $kls->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus kelas?')"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

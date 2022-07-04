@@ -3,7 +3,14 @@
 
 @section('main')
 
-    <h1 class="mt-3">Mapel</h1>
+    <div class="d-flex ">
+        <h1 class="mt-3 align-items-center">Mapel</h1>
+        @if (session('success'))
+            <div class="alert alert-success my-auto ms-3 py-2 mt-4" role="alert">
+                {!! session('success') !!}
+            </div>
+        @endif
+    </div>
     <hr>
 
     <div class="row">
@@ -12,20 +19,41 @@
             <div class="card">
                 <div class="card-body">
                     
-                    <form action="" method="post" class="mt-2 px-2">
+                    <form action="{{ route('mapel.store') }}" method="post" class="mt-2 px-2">
+                        @csrf
                         <div class="mb-2">
-                            <label for="mata-pelajaran" class="form-label">Mata Pelajaran</label>
-                            <input type="text" name="mata-pelajaran" id="mata-pelajaran" class="form-control">
+                            <label for="mapel" class="form-label">Mata Pelajaran</label>
+                            <input type="text" name="mapel" id="mapel" class="form-control @error('mapel') is-invalid @enderror " value="{{ old('mapel') }}">
+                            @error('mapel')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-2">
                             <label for="kelas" class="form-label">Kelas</label>
-                            <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
+                            <select class="form-select @error('kelas') is-invalid @enderror" aria-label="Default select example" name="kelas" id="kelas">
                                 <option value="x">X</option>
-                                <option value="x">XI</option>
-                                <option value="x">XI</option>
+                                <option value="xi">XI</option>
+                                <option value="xii">XII</option>
                             </select>
                         </div>
-                        <button class="btn btn-dark mt-2">Tambah Kelas</button>
+                        <div class="mb-2">
+                            <label for="jurusan" class="form-label">Jurusan</label>
+                            <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
+                                <option value="tra">TRA</option>
+                                <option value="tja">TJA</option>
+                                <option value="tkj">TKJ</option>
+                                <option value="rpl">RPL</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label for="guru_id" class="form-label">Guru Pengajar</label>
+                            <select class="form-select @error('guru_id') is-invalid @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
+                                @foreach ($gurus as $guru)
+                                    <option value="{{ $guru->id }}">{{ $guru->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-dark mt-2">Tambah Kelas</button>
                     </form>
 
                 </div>
@@ -52,25 +80,38 @@
                                 </form>
                             </div>
                             <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                             <td>#</td>
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
+                                            <td>Jurusan</td>
+                                            <td>Guru</td>
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>MTK</td>
-                                            <td>X</td>
-                                            <td class="text-center">
-                                                <a class="btn btn-warning" href="{{ route('mapel.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
+                                    <tbody style="border: 1px solid rgb(169, 167, 167)">
+                                        <?php $no=1 ?>
+                                        @foreach ($mapels as $mapel)
+                                            @if ($mapel['kelas'] == "x")
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $mapel->mapel }}</td>
+                                                <td>{{ strtoupper($mapel->kelas) }}</td>
+                                                <td>{{ strtoupper($mapel->jurusan) }}</td>
+                                                <td>{{ $mapel->guru->name }}</td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning" href="{{ route('mapel.edit', $mapel['id']) }}"><i class="bi bi-pencil-square"></i></a>
+                                                    <form action="{{ route('mapel.destroy', $mapel['id']) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill" onclick="return confirm('Hapus mapel?')"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -83,25 +124,38 @@
                                 </form>
                             </div>
                             <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                             <td>#</td>
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
+                                            <td>Jurusan</td>
+                                            <td>Guru</td>
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>MTK</td>
-                                            <td>XI</td>
-                                            <td class="text-center">
-                                                <a class="btn btn-warning" href="{{ route('mapel.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
+                                    <tbody style="border: 1px solid rgb(169, 167, 167)">
+                                        <?php $no=1 ?>
+                                        @foreach ($mapels as $mapel)
+                                            @if ($mapel['kelas'] == "xi")
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $mapel->mapel }}</td>
+                                                <td>{{ strtoupper($mapel->kelas) }}</td>
+                                                <td>{{ strtoupper($mapel->jurusan) }}</td>
+                                                <td>{{ $mapel->guru->name }}</td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning" href="{{ route('mapel.edit', $mapel['id']) }}"><i class="bi bi-pencil-square"></i></a>
+                                                    <form action="{{ route('mapel.destroy', $mapel['id']) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -114,25 +168,38 @@
                                 </form>
                             </div>
                             <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                                             <td>#</td>
                                             <td>Mata Pelajaran</td>
                                             <td>Kelas</td>
+                                            <td>Jurusan</td>
+                                            <td>Guru</td>
                                             <td>Opsi</td>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>MTK</td>
-                                            <td>XII</td>
-                                            <td class="text-center">
-                                                <a class="btn btn-warning" href="{{ route('mapel.edit', 1) }}"><i class="bi bi-pencil-square"></i></a>
-                                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
+                                    <tbody style="border: 1px solid rgb(169, 167, 167)">
+                                        <?php $no=1 ?>
+                                        @foreach ($mapels as $mapel)
+                                            @if ($mapel['kelas'] == "xii")
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $mapel->mapel }}</td>
+                                                <td>{{ strtoupper($mapel->kelas) }}</td>
+                                                <td>{{ strtoupper($mapel->jurusan) }}</td>
+                                                <td>{{ $mapel->guru->name }}</td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning" href="{{ route('mapel.edit', $mapel['id']) }}"><i class="bi bi-pencil-square"></i></a>
+                                                    <form action="{{ route('mapel.destroy', $mapel['id']) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

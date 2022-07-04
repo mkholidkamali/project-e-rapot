@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Semester extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function guru()
+    public function nilai()
     {
-        return $this->belongsTo(Guru::class);
-    }
-
-    public function siswa()
-    {
-        return $this->belongsTo(Siswa::class);
+        return $this->belongsTo(Nilai::class);
     }
 }

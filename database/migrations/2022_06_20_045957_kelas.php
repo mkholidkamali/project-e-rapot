@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+<<<<<<< HEAD:database/migrations/2022_06_20_045957_kelas.php
 
         schema::create('kelas',function(Blueprint $table) {
             
@@ -23,6 +24,17 @@ return new class extends Migration
     
     });
         
+=======
+        Schema::create('mapels', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('guru_id')->constrained('gurus');
+
+            $table->string('kelas');
+            $table->enum('jurusan', ['tra', 'tja', 'tkj', 'rpl']);
+            $table->string('mapel');
+            $table->timestamps();
+        });
+>>>>>>> e976e12bb39b1f0bbbc8a38c16379ce537bce892:database/migrations/2022_06_02_1450121_mapel.php
     }
 
     /**

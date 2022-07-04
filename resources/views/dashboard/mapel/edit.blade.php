@@ -3,27 +3,49 @@
 
 @section('main')
 
-    <h1 class="mt-3">Kelas - Update</h1>
+    <h1 class="mt-3">Mapel - Update</h1>
     <hr>
 
-    <a class="btn btn-primary mb-2 px-3" href="{{ route('kelas.index') }}">Back</a>
+    <a class="btn btn-primary mb-2 px-3" href="{{ route('mapel.index') }}">Back</a>
 
     <div class="card col-md-6">
         <div class="card-body">
-            <form action="" method="post" class="mt-2 px-2">
+            <form action="{{ route('mapel.update', $mapel->id) }}" method="post" class="mt-2 px-2">
+                @csrf
+                @method('PUT')
                 <div class="mb-2">
-                    <label for="mata-pelajaran" class="form-label">Mata Pelajaran</label>
-                    <input type="text" name="mata-pelajaran" id="mata-pelajaran" class="form-control">
+                    <label for="mapel" class="form-label">Mata Pelajaran</label>
+                    <input type="text" name="mapel" id="mapel" class="form-control @error('mapel') is-invalid @enderror" value="{{ $mapel->mapel, old('mapel') }}" autofocus>
+                    @error('mapel')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
-                    <label for="kelas" class="form-label">Kelas</label>
+                    <label for="kelas" class="form-label">Kelas - </label> <small>Sebelumnya : {{ strtoupper($mapel->kelas) }}</small>
                     <select class="form-select" aria-label="Default select example" name="kelas" id="kelas">
                         <option value="x">X</option>
-                        <option value="x">XI</option>
-                        <option value="x">XI</option>
+                        <option value="xi">XI</option>
+                        <option value="xii">XII</option>
                     </select>
                 </div>
-                <button class="btn btn-dark mt-2">Tambah Kelas</button>
+                <div class="mb-2">
+                    <label for="jurusan" class="form-label">Jurusan - </label> <small>Sebelumnya : {{ strtoupper($mapel->jurusan) }}</small>
+                    <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
+                        <option value="tra">TRA</option>
+                        <option value="tja">TJA</option>
+                        <option value="tkj">TKJ</option>
+                        <option value="rpl">RPL</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="guru_id" class="form-label">Guru Pengajar - </label> <small>Sebelumnya : {{ $mapel->guru->name }}</small>
+                    <select class="form-select @error('guru_id') is-invalid @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
+                        @foreach ($gurus as $guru)
+                            <option value="{{ $guru->id }}">{{ $guru->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button class="btn btn-warning mt-2">Edit Kelas</button>
             </form>
         </div>
     </div>

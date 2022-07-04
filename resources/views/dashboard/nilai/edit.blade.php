@@ -10,34 +10,21 @@
 
     <div class="card col-md-6">
         <div class="card-body">
-            <form action="" method="post" class="">
+            <form action="{{ route('nilai.update', $nilai->id) }}" method="post">
+                @csrf
                 <div class="mb-2">
-                    <label for="nama" class="form-label">Nama Siswa</label>
-                    <input type="text" class="form-control" name="nama" id="nama">
-                </div>
-                <div class="mb-2">
-                    <label for="nilai_harian" class="form-label">Nilai Harian</label>
-                    <input type="number" class="form-control" name="nilai_harian" id="nilai_harian">
-                </div>
-                <div class="mb-2">
-                    <label for="uts" class="form-label">UTS</label>
-                    <input type="number" class="form-control" name="uts" id="uts">
-                </div>
-                <div class="mb-2">
-                    <label for="uas" class="form-label">UAS</label>
-                    <input type="number" class="form-control" name="uas" id="uas">
-                </div>
-                <div class="mb-2">
-                    <label for="predikat_pengetahuan" class="form-label">Predikat Pengetahuan</label>
-                    <input type="text" class="form-control" name="predikat_pengetahuan" id="predikat_pengetahuan">
+                    <label for="pengetahuan" class="form-label">Pengetahuan</label>
+                    <input type="number" class="form-control @error('pengetahuan') is-invalid @enderror" name="pengetahuan" id="pengetahuan" value="{{ $nilai->pengetahuan, old('pengetahuan') }}">
+                    @error('pengetahuan')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
                     <label for="ketrampilan" class="form-label">Ketrampilan</label>
-                    <input type="number" class="form-control" name="ketrampilan" id="ketrampilan">
-                </div>
-                <div class="mb-2">
-                    <label for="predikat_ketrampilan" class="form-label">Predikat Ketrampilan</label>
-                    <input type="text" class="form-control" name="predikat_ketrampilan" id="predikat_ketrampilan">
+                    <input type="number" class="form-control @error('ketrampilan') is-invalid @enderror" name="ketrampilan" id="ketrampilan" value="{{ $nilai->ketrampilan, old('ketrampilan') }}">
+                    @error('ketrampilan')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <button class="btn btn-warning mt-2" type="submit">Edit Nilai</button>
             </form>
