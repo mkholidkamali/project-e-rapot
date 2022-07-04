@@ -31,13 +31,13 @@ class RapotController extends Controller
     public function select(Request $request)
     {
         // Get Semester
-        $semester = Nilai::where('semester_id', $request->input('semester_id'))->first();
+        // $semester = Nilai::where('semester_id', $request->input('semester_id'))->first();
 
         // Get Siswa By Kelas
         $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('nama')->get();
         foreach ($siswas as $siswa) {
             $rapots[] = Nilai::where([
-                ['semester_id', $semester->semester_id],
+                ['semester_id', $request->input('semester_id')],
                 ['siswa_id', $siswa->id]
             ])->first();
         }
