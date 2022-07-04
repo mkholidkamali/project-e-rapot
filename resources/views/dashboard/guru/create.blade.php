@@ -10,14 +10,21 @@
 
     <div class="card col-md-6">
         <div class="card-body">
-            <form action="" method="post" class="">
+            <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-2">
                     <label for="no_induk" class="form-label">No Induk</label>
-                    <input type="text" class="form-control" name="no_induk" id="no_induk">
+                    <input type="number" class="form-control @error('no_induk') is-invalid @enderror" name="no_induk" id="no_induk">
+                    @error('no_induk')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
-                    <label for="nama" class="form-label">Nama Guru</label>
-                    <input type="text" class="form-control" name="nama" id="nama">
+                    <label for="name" class="form-label">Nama Guru</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name">
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-2">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
@@ -28,7 +35,10 @@
                 </div>
                 <div class="mb-2">
                     <label for="foto" class="form-label">Foto</label>
-                    <input type="file" class="form-control" name="foto" id="foto">
+                    <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" id="foto">
+                    @error('foto')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <button class="btn btn-success mt-2">Tambah Guru</button>
             </form>

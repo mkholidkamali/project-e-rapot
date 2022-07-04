@@ -32,6 +32,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 // GURU
 Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
 Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
+Route::post('/guru/store', [GuruController::class, 'store'])->name('guru.store');
 Route::get('/guru/{id}/show', [GuruController::class, 'show'])->name('guru.show');
 Route::get('/guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
 

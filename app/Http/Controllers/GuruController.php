@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
@@ -13,7 +15,10 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('dashboard.guru.index');
+        $gurus = Guru::all();
+        return view('dashboard.guru.index', [
+            'gurus' => $gurus
+        ]);
     }
 
     /**
@@ -34,7 +39,28 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate Input
+        $dataGuru = $request->validate([
+            'no_induk' => ['required', 'unique:gurus'],
+            'name' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'foto' => ['required', 'mimes:jpg, jpeg']
+        ]);
+
+        // Create Guru
+        $dataGuru['foto'] = $request->file('foto')->storeAs('profile/guru', $dataGuru['no_induk'] . ".jpg");
+        Guru::create($dataGuru);
+
+        // Create Guru Account
+        $accountGuru = [
+            'name' => $dataGuru['name'],
+            'email' => $dataGuru['no_induk'] . "@telkom.com",
+            'password' => bcrypt($dataGuru['no_induk']),
+            'is_admin' => false,
+        ];
+        User::create($accountGuru);
+
+        return redirect(route('guru.index'))->with('success', 'Berhasil menambah Guru');
     }
 
     /**

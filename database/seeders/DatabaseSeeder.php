@@ -31,42 +31,43 @@ class DatabaseSeeder extends Seeder
             'name' => 'Testing',
             'email' => 'testing@testing.com',
             'password' => bcrypt('12345678'),
+            'is_admin' => true
         ]);
         Guru::create([
             'no_induk' => '919282992823',
             'name' => 'Anthonio',
             'jenis_kelamin' => 'l',
-            'foto' => 'testing.jpg'
+            'foto' => 'profile/guru/profile.webp'
         ]);
         Guru::create([
             'no_induk' => '829281192282',
             'name' => 'Brando',
             'jenis_kelamin' => 'p',
-            'foto' => 'testing.jpg'
+            'foto' => 'profile/guru/profile.webp'
         ]);
         Guru::create([
             'no_induk' => '271812912828',
             'name' => 'Chris',
             'jenis_kelamin' => 'l',
-            'foto' => 'testing.jpg'
+            'foto' => 'profile/guru/profile.webp'
         ]);
         Guru::create([
             'no_induk' => '1234567890',
             'name' => 'Gema',
             'jenis_kelamin' => 'l',
-            'foto' => 'testing.jpg'
+            'foto' => 'profile/guru/profile.webp'
         ]);
         Guru::create([
             'no_induk' => '1234567891',
             'name' => 'Gita',
             'jenis_kelamin' => 'l',
-            'foto' => 'testing.jpg'
+            'foto' => 'profile/guru/profile.webp'
         ]);
         Guru::create([
             'no_induk' => '1234567892',
             'name' => 'Tara',
             'jenis_kelamin' => 'l',
-            'foto' => 'testing.jpg'
+            'foto' => 'profile/guru/profile.webp'
         ]);
         Kelas::create([
             'guru_id' => 1,
