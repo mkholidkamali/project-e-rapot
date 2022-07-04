@@ -85,7 +85,10 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.guru.edit');
+        $guru = Guru::where('id', $id)->first();
+        return view('dashboard.guru.edit' , [
+            'guru' => $guru
+        ]);
     }
 
     /**
