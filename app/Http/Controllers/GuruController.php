@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class GuruController extends Controller
 {
@@ -85,7 +86,10 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.guru.edit');
+        $guru = Guru::where('id', $id)->first();
+        return view('dashboard.guru.edit', [
+            'guru' => $guru
+        ]);
     }
 
     /**
@@ -97,7 +101,34 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validate Input
+        $dataGuru = $request->validate([
+            'no_induk' => ['required'],
+            'name' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'foto' => ['required', 'mimes:jpg, jpeg']
+        ]);
+
+        // Delete Old Image
+        $guru = Guru::where('id', $id)->first();
+        if (File::exists(public_path('storage/' . $guru->foto))) {
+            File::delete(public_path('storage/' . $guru->foto));
+        }
+
+        // Update Guru
+        $dataGuru['foto'] = $request->file('foto')->storeAs('profile/guru', $dataGuru['no_induk'] . ".jpg");
+        Guru::where('id', $id)->update($dataGuru);
+
+        // Update Guru Account
+        $accountGuru = [
+            'name' => $dataGuru['name'],
+            'email' => $dataGuru['no_induk'] . "@telkom.com",
+            'password' => bcrypt($dataGuru['no_induk']),
+            'is_admin' => false,
+        ];
+        User::where('email', $guru->no_induk . '@telkom.com')->update($accountGuru);
+
+        return redirect(route('guru.index'))->with('success', 'Berhasil mengubah Guru');
     }
 
     /**
