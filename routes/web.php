@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GrDashboardController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// ADMIN ONLY
+// ADMIN ROLE
 Route::middleware('admin')->group(function() {
     // DASHBOARD
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -73,4 +74,14 @@ Route::middleware('admin')->group(function() {
     Route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
     Route::post('/rapot', [RapotController::class, 'select'])->name('rapot.select');
     Route::get('/rapot/{id}/show', [RapotController::class, 'show'])->name('rapot.show');
+});
+
+
+// GURU ROLE
+Route::middleware('auth')->group(function() {
+    // DASHBOARD
+    Route::get('/guru/dashboard', [GrDashboardController::class, 'index'])->name('gr.dashboard.index');
+    
+    // WALI KELAS
+    // MAPEL
 });

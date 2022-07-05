@@ -7,17 +7,15 @@ use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class GrDashboardController extends Controller
 {
     public function index()
     {
-        $guru = Guru::all()->count();
         $kelasX = Kelas::where('kelas', 'LIKE', 'X%')->count();
         $kelasXI = Kelas::where('kelas', 'LIKE', 'XI%')->count();
         $kelasXII = Kelas::where('kelas', 'LIKE', 'XII%')->count();
         $siswa = Siswa::all()->count();
-        return view('dashboard.index', [
-            'guru' => $guru,
+        return view('guru.index', [
             'kelasX' => $kelasX,
             'kelasXI' => $kelasXI,
             'kelasXII' => $kelasXII,
