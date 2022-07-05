@@ -13,8 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @else
                     {{ __('You are logged in!') }}
+                    @endif
+
                 </div>
             </div>
         </div>
