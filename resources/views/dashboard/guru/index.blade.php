@@ -49,7 +49,11 @@
                             <td class="text-center">
                                 <a class="btn btn-primary" href="{{ route('guru.show', $guru->id) }}"><i class="bi bi-eye"></i></a>
                                 <a class="btn btn-warning" href="{{ route('guru.edit', $guru->id) }}"><i class="bi bi-pencil-square"></i></a>
-                                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                <form action="{{ route('guru.destroy', $guru->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus data guru?')"><i class="bi bi-trash-fill"></i></button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

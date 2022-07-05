@@ -139,6 +139,18 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Delete Old Image
+        $guru = Guru::where('id', $id)->first();
+        if (File::exists(public_path('storage/' . $guru->foto))) {
+            File::delete(public_path('storage/' . $guru->foto));
+        }
+
+        // Delete Account
+        User::where('email', $guru->no_induk . '@telkom.com')->delete();
+
+        // Delete Guru
+        Guru::destroy($guru->id);
+
+        return redirect(route('guru.index'))->with('success', 'Berhasil menghapus Guru');
     }
 }
