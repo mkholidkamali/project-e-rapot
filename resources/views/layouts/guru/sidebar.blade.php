@@ -13,19 +13,19 @@
                     Dashboard
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link text-white {{ Request::is('guru/kelas*') ? 'active' : '' }}" href="{{ route('guru.index') }}">
                     Wali Kelas
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('guru/siswa*') ? 'active' : '' }}" href="{{ route('siswa.index') }}">
-                    Siswa
-                </a>
-                <hr class="text-white">
-            </li>
+            </li> --}}
+            <hr class="text-white">
             <li class="nav-item">
                 <h5 class="text-white ps-3">Akademik</h5>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Request::is('guru/nilai-siswa*') ? 'active' : '' }}" href="{{ route('gr.siswa.index') }}">
+                    Wali Kelas
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ Request::is('guru/mapel*') ? 'active' : '' }}" href="{{ route('mapel.index') }}">

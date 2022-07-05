@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GrDashboardController;
+use App\Http\Controllers\GrSiswaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
@@ -83,5 +84,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/guru/dashboard', [GrDashboardController::class, 'index'])->name('gr.dashboard.index');
     
     // WALI KELAS
-    // MAPEL
+    Route::get('/guru/nilai-siswa', [GrSiswaController::class, 'index'])->name('gr.siswa.index');
+    Route::post('/guru/nilai-siswa', [GrSiswaController::class, 'select'])->name('gr.siswa.select');
+
+    // INPUT NILAI
 });
