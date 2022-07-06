@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('guru/mapel*') ? 'active' : '' }}" href="{{ route('mapel.index') }}">
+                <a class="nav-link text-white {{ Request::is('guru/nilai-mapel*') ? 'active' : '' }}" href="{{ route('gr.mapel.index') }}">
                     Matpel
                 </a>
             </li>

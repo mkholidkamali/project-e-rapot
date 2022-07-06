@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GrDashboardController;
+use App\Http\Controllers\GrMapelController;
 use App\Http\Controllers\GrSiswaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
@@ -88,4 +89,5 @@ Route::middleware('auth')->group(function() {
     Route::post('/guru/nilai-siswa', [GrSiswaController::class, 'select'])->name('gr.siswa.select');
 
     // INPUT NILAI
+    Route::get('/guru/nilai-mapel', [GrMapelController::class, 'index'])->name('gr.mapel.index');
 });

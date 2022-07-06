@@ -16,10 +16,38 @@
     <div class="card">
         <div class="card-body">
 
+            @if ($isWalas)
+            <h5>Tentukan data :</h5>
+            <div class="col-md-8">
+                <form action="{{ route('gr.siswa.select') }}" method="post" class="mt-2 px-2">
+                    @csrf
+                    <div class="d-flex">
+                        <div class="mb-1 me-2">
+                            <label for="kelas_id" class="form-label">Kelas</label>
+                            <select class="form-select" aria-label="Default select example" name="kelas_id" id="kelas_id">
+                                @foreach ($kelas as $kls)
+                                    <option value="{{ $kls->id }}">{{ $kls->kelas }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-1 me-2">
+                            <label for="semester_id" class="form-label">Semester</label>
+                            <select name="semester_id" id="semester_id" class="form-select">
+                                @foreach ($semester as $smt)
+                                    <option value="{{ $smt->id }}">{{ ucfirst($smt->semester) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark mt-2 px-4">Pilih</button>
+                    <a href="{{ route('gr.siswa.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
+                </form>
+            </div>
+            @else
+            <h5>Tidak ada kelas yang anda Wali-kan</h5>
+            @endif
+
             <div class="d-flex justify-content-end mb-3">
-                <div class="d-flex align-items-center me-3">
-                    {{-- <a class="btn btn-success" href="{{ route('nilai.create') }}">Tambah Nilai</a> --}}
-                </div>
                 <form action="" method="POST">
                     <label for="search">Search</label>
                     <input type="text" name="search" class="form-control">
@@ -33,19 +61,31 @@
                     <thead>
                         <tr class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">
                             <td>#</td>
-                            <td>Nama Siswa</td>
                             <td>NIS</td>
+                            <td>Nama Siswa</td>
+                            <td>Jurusan</td>
+                            <td>Kelas</td>
+                            <td>Jenis Kelamin</td>
+                            <td>Agama</td>
                             <td>NISN</td>
+                            <td>Foto</td> 
                             <td class="text-center">Opsi</td>
                         </tr>
                     </thead>
                     <tbody style="border: 1px solid rgb(169, 167, 167)">
                         @forelse ($rapots as $rapot)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $rapot->siswa->nama }}</td>
+                                <td>{{ $rapot->siswa->absen }}</td>
                                 <td>{{ $rapot->siswa->nis }}</td>
+                                <td>{{ $rapot->siswa->nama }}</td>
+                                <td>{{ strtoupper($rapot->siswa->kelas->jurusan) }}</td>
+                                <td>{{ $rapot->siswa->kelas->kelas }}</td>
+                                <td>{{ $rapot->siswa->jenis_kelamin="l" ? 'Laki-laki' : 'Perempuan'}}</td>
+                                <td>{{ ucfirst($rapot->siswa->agama) }}</td>
                                 <td>{{ $rapot->siswa->nisn }}</td>
+                                <td>
+                                    <img src="{{ asset('storage/' . $rapot->siswa->foto)  }}" width="50vh">
+                                </td>
                                 <td class="text-center">
                                     <a class="btn btn-success" href="{{ route('rapot.show', $rapot->id) }}" target="_blank"><i class="bi bi-file-earmark-medical"></i></a>
                                 </td>
