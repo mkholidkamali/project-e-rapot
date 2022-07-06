@@ -87,12 +87,12 @@
                                     <img src="{{ asset('storage/' . $rapot->siswa->foto)  }}" width="50vh">
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-success" href="{{ route('rapot.show', $rapot->id) }}" target="_blank"><i class="bi bi-file-earmark-medical"></i></a>
+                                    <a class="btn btn-success" href="{{ route('gr.siswa.show', $rapot->id) }}" target="_blank"><i class="bi bi-file-earmark-medical"></i></a>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                                <td colspan="10" class="text-center"><b>Data tidak ada</b></td>
                             </tr>
                         @endforelse
                     </tbody>

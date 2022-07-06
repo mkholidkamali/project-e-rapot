@@ -1,5 +1,5 @@
 
-@extends('layouts.dashboard.main')
+@extends('layouts.guru.main')
 
 @section('main')
 

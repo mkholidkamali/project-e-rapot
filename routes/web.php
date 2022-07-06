@@ -87,6 +87,7 @@ Route::middleware('auth')->group(function() {
     // WALI KELAS
     Route::get('/guru/nilai-siswa', [GrSiswaController::class, 'index'])->name('gr.siswa.index');
     Route::post('/guru/nilai-siswa', [GrSiswaController::class, 'select'])->name('gr.siswa.select');
+    Route::get('/guru/nilai-siswa/{id}/rapot', [GrSiswaController::class, 'show'])->name('gr.siswa.show');
 
     // INPUT NILAI
     Route::get('/guru/nilai-mapel', [GrMapelController::class, 'index'])->name('gr.mapel.index');

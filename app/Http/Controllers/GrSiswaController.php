@@ -97,7 +97,21 @@ class GrSiswaController extends Controller
      */
     public function show($id)
     {
-        //
+        // Get Siswa Data
+        $nilaiData = Nilai::where('id', $id)->first();
+        $siswa = Siswa::where('id', $nilaiData->siswa_id)->first();
+
+        // Get Nilai Data
+        $nilais = Nilai::where([
+            ['siswa_id', $siswa->id],
+            ['semester_id', $nilaiData->semester_id],
+        ])->get();
+
+        return view('guru.siswa.show', [
+            'siswa' => $siswa,
+            'nilaiData' => $nilaiData,
+            'nilais' => $nilais,
+        ]);
     }
 
 }
