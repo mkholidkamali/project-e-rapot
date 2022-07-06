@@ -87,4 +87,51 @@
         </div>
 
     </div>
+
+    <div class="card mt-4" style="border: 2px solid gray">
+        <div class="card-body">
+            <h1 class="text-center">Admin Role</h1>
+            <h5>A. Page Dashboard</h5>
+            <p>
+                = Halaman info, terkait banyaknya data<br>
+            </p>
+            <h5>B. Page Guru</h5>
+            <p>
+                = Halaman pengelola guru<br>
+                > 4 aksi : Create, Read, Update, Delete <br>
+                > Create : Ketika membuat data guru baru, maka akun Guru dapat digunakan. <br> 
+                -> Format akun : username(no_induk@telkom.com) & password(no_induk)<br>
+            </p>
+            <h5>C. Page Siswa</h5>
+            <p>
+                = Halaman pengelola siswa<br>
+                > 4 aksi : Create, Read, Update, Delete <br>
+                !! Pastikan membuat semua : mapel & kelas terlebih dahulu, karena mapel pada rapot siswa tidak bisa ditambahkan / dikurangkan<br>
+            </p>
+            <h5>D. Page Kelas</h5>
+            <p>
+                = Halaman pengelola kelas<br>
+                > 4 aksi : Create, Read, Update, Delete <br>
+            </p>
+            <h5>E. Page Matpel</h5>
+            <p>
+                = Halaman pengelola Mata Pelajaran<br>
+                > 4 aksi : Create, Read, Update, Delete <br>
+            </p>
+            <h5>F. Page Nilai</h5>
+            <p>
+                = Halaman pengelola Nilai<br>
+                > 2 aksi : Read, Update <br>
+            </p>
+            <h5>G. Page Rapot</h5>
+            <p>
+                = Halaman pengelola Rapot<br>
+                > 2 aksi : Read, Print PDF<br>
+            </p>
+            <br>
+            <h3><b>Note :</b></h3>
+            <h5>1. Pastikan buat semua 'Mapel' terlebih dahulu, baru buat 'Siswa'. Karena mapel pada 'Rapot' tidak dapat dirubah</h5>
+        </div>
+    </div>
+
 @endsection
