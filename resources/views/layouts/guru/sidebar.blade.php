@@ -9,15 +9,10 @@
     <div class="position-sticky pt-3" id="sidebar">
         <ul class="nav nav-pills flex-column ">
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('guru/dashboard*') ? 'active' : '' }}" aria-current="page" href="/">
+                <a class="nav-link text-white {{ Request::is('guru/dashboard*') ? 'active' : '' }}" aria-current="page" href="{{ route('gr.dashboard.index') }}">
                     Dashboard
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('guru/kelas*') ? 'active' : '' }}" href="{{ route('guru.index') }}">
-                    Wali Kelas
-                </a>
-            </li> --}}
             <hr class="text-white">
             <li class="nav-item">
                 <h5 class="text-white ps-3">Akademik</h5>
@@ -28,7 +23,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('guru/nilai-mapel*') ? 'active' : '' }}" href="{{ route('gr.mapel.index') }}">
+                <a class="nav-link text-white {{ Request::is('guru/mapel*') ? 'active' : '' }}" href="{{ route('gr.mapel.index') }}">
                     Matpel
                 </a>
             </li>

@@ -90,6 +90,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/guru/nilai-siswa/{id}/rapot', [GrSiswaController::class, 'show'])->name('gr.siswa.show');
 
     // INPUT NILAI
-    Route::get('/guru/nilai-mapel', [GrMapelController::class, 'index'])->name('gr.mapel.index');
-    Route::post('/guru/nilai-mapel', [GrMapelController::class, 'select'])->name('gr.mapel.select');
+    Route::get('/guru/mapel', [GrMapelController::class, 'index'])->name('gr.mapel.index');
+    Route::post('/guru/mapel', [GrMapelController::class, 'select'])->name('gr.mapel.select');
+    Route::get('/guru/mapel/{kelas}/{mapel}/{semester}/edit-nilai', [GrMapelController::class, 'edit'])->name('gr.mapel.edit');
+    Route::post('/guru/mapel/{id}/edit-nilai', [GrMapelController::class, 'update'])->name('gr.mapel.update');
 });
