@@ -20,20 +20,20 @@ class GrSiswaController extends Controller
      */
     public function index(Request $request)
     {
-        // Get No_induk from Email - User
+        // GURU
         $pattern = "[\d+]";
         $string = Auth::user()->email;
         preg_match($pattern, $string, $noInduk) ;
-
-        // Get Id from Guru where no_induk - Guru
         $guru = Guru::where('no_induk', $noInduk)->first();
 
-        // Get Kelas from Guru_id - Kelas
+        // KELAS
         $kelas = Kelas::where('guru_id', $guru->id)->get();
         
+        // SEMESTER
+        $semester = Semester::all();
+
         // Return if Walas
         if (!$kelas->isEmpty()) {
-            $semester = Semester::all();
             return view('guru.siswa.index', [
                 'kelas' => $kelas,
                 'semester' => $semester,
@@ -44,7 +44,7 @@ class GrSiswaController extends Controller
         }
 
         // Return if not walas
-        return view('dashboard.rapot.index', [
+        return view('guru.siswa.index', [
             'kelas' => [],
             'semester' => [],
             'rapots' => [],

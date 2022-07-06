@@ -91,4 +91,5 @@ Route::middleware('auth')->group(function() {
 
     // INPUT NILAI
     Route::get('/guru/nilai-mapel', [GrMapelController::class, 'index'])->name('gr.mapel.index');
+    Route::post('/guru/nilai-mapel', [GrMapelController::class, 'select'])->name('gr.mapel.select');
 });
