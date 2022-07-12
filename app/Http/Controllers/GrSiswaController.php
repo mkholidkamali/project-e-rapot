@@ -26,14 +26,17 @@ class GrSiswaController extends Controller
         preg_match($pattern, $string, $noInduk) ;
         $guru = Guru::where('no_induk', $noInduk)->first();
 
-        // KELAS
-        $kelas = Kelas::where('guru_id', $guru->id)->get();
-        
-        // SEMESTER
-        $semester = Semester::all();
+        $kelas = [];
+        $semester = [];
+        if (!empty($guru)) {
+            // KELAS
+            $kelas = Kelas::where('guru_id', $guru->id)->get();
+            // SEMESTER
+            $semester = Semester::all();
+        }
 
         // Return if Walas
-        if (!$kelas->isEmpty()) {
+        if (!empty($kelas)) {
             return view('guru.siswa.index', [
                 'kelas' => $kelas,
                 'semester' => $semester,

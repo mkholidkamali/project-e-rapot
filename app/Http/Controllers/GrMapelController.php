@@ -27,17 +27,20 @@ class GrMapelController extends Controller
         preg_match($pattern, $string, $noInduk) ;
         $guru = Guru::where('no_induk', $noInduk)->first();
 
-        // MAPEL
-        $mapels = Mapel::where('guru_id', $guru->id)->get();
-
-        // KELAS
-        $kelas = Kelas::where('guru_id', $guru->id)->get();
-
-        // SEMESTER
-        $semester = Semester::all();
+        $mapels = [];
+        $kelas = [];
+        $semester = [];
+        if (!empty($guru)) {
+            // MAPEL
+            $mapels = Mapel::where('guru_id', $guru->id)->get();
+            // KELAS
+            $kelas = Kelas::where('guru_id', $guru->id)->get();
+            // SEMESTER
+            $semester = Semester::all();
+        }
 
         // Return Mapel Option
-        if (!$mapels->isEmpty()) {
+        if (!empty($mapels)) {
             return view('guru.mapel.index', [
                 'mapels' => $mapels,
                 'kelas' => $kelas,
