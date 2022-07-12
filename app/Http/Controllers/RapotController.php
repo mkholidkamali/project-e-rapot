@@ -20,11 +20,16 @@ class RapotController extends Controller
     {
         $kelas = Kelas::all();
         $semester = Semester::all();
+        $isNull = false;
+        if ($kelas->isEmpty() || $semester->isEmpty()) {
+            $isNull = true;
+        }
         return view('dashboard.rapot.index', [
             'kelas' => $kelas,
             'semester' => $semester,
             'rapots' => [],
-            'selected' => ''
+            'selected' => '',
+            'isNull' => $isNull,
         ]);
     }
 
@@ -47,11 +52,13 @@ class RapotController extends Controller
         
         $kelas = Kelas::all();
         $semester = Semester::all();
+        $isNull = false;
         return view('dashboard.rapot.index', [
             'kelas' => $kelas,
             'semester' => $semester,
             'rapots' => $rapots ? $rapots : [],
-            'selected' => $selected
+            'selected' => $selected,
+            'isNull' => $isNull,
         ]);
     }
 

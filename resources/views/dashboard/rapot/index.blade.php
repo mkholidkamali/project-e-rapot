@@ -16,33 +16,38 @@
     <div class="card">
         <div class="card-body">
 
-            <h5>Tentukan data :</h5>
-            {{-- <small>Note* : Ini nanti mungkin di select dlu baru muncul datanya</small> --}}
-            <div class="col-md-8">
-                <form action="{{ route('rapot.select') }}" method="post" class="mt-2 px-2">
-                    @csrf
-                    <div class="d-flex">
-                        <div class="mb-1 me-2">
-                            <label for="kelas_id" class="form-label">Kelas</label>
-                            <select class="form-select" aria-label="Default select example" name="kelas_id" id="kelas_id">
-                                @foreach ($kelas as $kls)
-                                    <option value="{{ $kls->id }}">{{ $kls->kelas }}</option>
-                                @endforeach
-                            </select>
+            @if(!$isNull)
+                <h5>Tentukan data :</h5>
+                {{-- <small>Note* : Ini nanti mungkin di select dlu baru muncul datanya</small> --}}
+                <div class="col-md-8">
+                    <form action="{{ route('rapot.select') }}" method="post" class="mt-2 px-2">
+                        @csrf
+                        <div class="d-flex">
+                            <div class="mb-1 me-2">
+                                <label for="kelas_id" class="form-label">Kelas</label>
+                                <select class="form-select" aria-label="Default select example" name="kelas_id" id="kelas_id">
+                                    @foreach ($kelas as $kls)
+                                        <option value="{{ $kls->id }}">{{ $kls->kelas }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-1 me-2">
+                                <label for="semester_id" class="form-label">Semester</label>
+                                <select name="semester_id" id="semester_id" class="form-select">
+                                    @foreach ($semester as $smt)
+                                        <option value="{{ $smt->id }}">{{ ucfirst($smt->semester) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-1 me-2">
-                            <label for="semester_id" class="form-label">Semester</label>
-                            <select name="semester_id" id="semester_id" class="form-select">
-                                @foreach ($semester as $smt)
-                                    <option value="{{ $smt->id }}">{{ ucfirst($smt->semester) }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <button class="btn btn-dark mt-2 px-4">Pilih</button>
-                    <a href="{{ route('rapot.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
-                </form>
-            </div>
+                        <button class="btn btn-dark mt-2 px-4">Pilih</button>
+                        <a href="{{ route('rapot.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
+                    </form>
+                </div>
+            @else
+                <h5>Data tidak lengkap</h5>
+                <small>Pastikan data berikut tersedia : Kelas dan Semester</small>
+            @endif
 
             <div class="d-flex justify-content-end mb-3">
                 <div class="d-flex align-items-center me-3">

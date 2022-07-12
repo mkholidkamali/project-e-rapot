@@ -22,6 +22,10 @@ class NilaiController extends Controller
         $kelas = Kelas::all();
         $mapels = Mapel::all();
         $semesters = Semester::all();
+        $isNull = false;
+        if ($kelas->isEmpty() || $mapels->isEmpty() || $semesters->isEmpty()) {
+            $isNull = true;
+        }
         $dataNilai = [];
         $selected = '';
         return view('dashboard.nilai.index', [
@@ -29,7 +33,8 @@ class NilaiController extends Controller
             'mapels' => $mapels,
             'semesters' => $semesters,
             'dataNilai' => $dataNilai,
-            'selected' => ''
+            'selected' => '',
+            'isNull' => $isNull,
         ]);
     }
 
@@ -69,12 +74,14 @@ class NilaiController extends Controller
         $kelas = Kelas::all();
         $mapels = Mapel::all();
         $semesters = Semester::all();
+        $isNull = false;
         return view('dashboard.nilai.index', [
             'kelas' => $kelas,
             'mapels' => $mapels,
             'semesters' => $semesters,
             'dataNilai' => $nilais ? $dataNilai : [],
             'selected' => $selected,
+            'isNull' => $isNull,
         ]);
     }
 

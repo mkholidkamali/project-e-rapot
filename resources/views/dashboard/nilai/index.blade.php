@@ -16,41 +16,45 @@
     <div class="card">
         <div class="card-body">
 
-            <h5>Tentukan data :</h5>
-            {{-- <small>Note* : Ini nanti mungkin di select dlu baru muncul datanya</small> --}}
-            <div class="col-md-8">
-                <form action="{{ route('nilai.select') }}" method="post" class="mt-2 px-2">
-                    @csrf
-                    <div class="d-flex">
-                        <div class="mb-1 me-2">
-                            <label for="kelas_id" class="form-label">Kelas</label>
-                            <select class="form-select" aria-label="Default select example" name="kelas_id" id="kelas_id">
-                                @foreach ($kelas as $kls)
-                                    <option value="{{ $kls->id }}">{{ $kls->kelas }}</option>
-                                @endforeach
-                            </select>
+            @if (!$isNull)
+                <h5>Tentukan data :</h5>
+                <div class="col-md-8">
+                    <form action="{{ route('nilai.select') }}" method="post" class="mt-2 px-2">
+                        @csrf
+                        <div class="d-flex">
+                            <div class="mb-1 me-2">
+                                <label for="kelas_id" class="form-label">Kelas</label>
+                                <select class="form-select" aria-label="Default select example" name="kelas_id" id="kelas_id">
+                                    @foreach ($kelas as $kls)
+                                        <option value="{{ $kls->id }}">{{ $kls->kelas }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-1 me-2">
+                                <label for="mapel_id" class="form-label">Mata Pelajaran</label>
+                                <select name="mapel_id" id="mapel_id" class="form-select">
+                                    @foreach ($mapels as $mapel)
+                                        <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-1 me-2">
+                                <label for="semester_id" class="form-label">Semester</label>
+                                <select name="semester_id" id="semester_id" class="form-select">
+                                    @foreach ($semesters as $semester)
+                                        <option value="{{ $semester->id }}">{{ ucfirst($semester->semester) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-1 me-2">
-                            <label for="mapel_id" class="form-label">Mata Pelajaran</label>
-                            <select name="mapel_id" id="mapel_id" class="form-select">
-                                @foreach ($mapels as $mapel)
-                                    <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-1 me-2">
-                            <label for="semester_id" class="form-label">Semester</label>
-                            <select name="semester_id" id="semester_id" class="form-select">
-                                @foreach ($semesters as $semester)
-                                    <option value="{{ $semester->id }}">{{ ucfirst($semester->semester) }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <button class="btn btn-dark mt-2 px-4">Pilih</button>
-                    <a href="{{ route('nilai.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
-                </form>
-            </div>
+                        <button class="btn btn-dark mt-2 px-4">Pilih</button>
+                        <a href="{{ route('nilai.index') }}" class="btn btn-dark mt-2 px-4">Refresh</a>
+                    </form>
+                </div>
+            @else
+                <h5>Data tidak lengkap</h5>
+                <small>Pastikan data berikut tersedia : Kelas, Mata Pelajaran, Semester</small>
+            @endif
 
             <div class="d-flex justify-content-end mb-3">
                 <div class="d-flex align-items-center me-3">
