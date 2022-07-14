@@ -8,6 +8,7 @@ use App\Models\Rapot;
 use App\Models\Semester;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use PDF;
 
 class RapotController extends Controller
 {
@@ -140,5 +141,16 @@ class RapotController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportpdf(){
+
+
+        $data = Rapot::all();
+        view()->share('data',$data);
+        
+        $pdf =  PDF::loadview('dashboard.rapot.datapdf');
+
+        return $pdf->download('raport.pdf');
     }
 }

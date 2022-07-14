@@ -76,6 +76,9 @@ Route::middleware('admin')->group(function() {
     Route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
     Route::post('/rapot', [RapotController::class, 'select'])->name('rapot.select');
     Route::get('/rapot/{id}/show', [RapotController::class, 'show'])->name('rapot.show');
+    
+    //CETAK PDF
+    Route::get('/exportpdf', [RapotController::class, 'exportpdf'])->name('exportpdf');
 });
 
 

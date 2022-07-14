@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('mapels', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_id')->constrained('gurus');
+            $table->foreignId('guru_id');
 
             $table->string('kelas');
             $table->enum('jurusan', ['tra', 'tja', 'tkj', 'rpl']);
