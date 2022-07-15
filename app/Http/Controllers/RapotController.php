@@ -9,7 +9,6 @@ use App\Models\Semester;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
-// use PDF;
 
 class RapotController extends Controller
 {
@@ -45,7 +44,9 @@ class RapotController extends Controller
                 ['siswa_id', $siswa->id]
             ])->first();
         }
-        array_shift($rapots);
+        if (!empty($rapots)) {
+            array_shift($rapots);
+        }
 
         // Selected Data
         $kelasData = Kelas::where('id', $request->input('kelas_id'))->pluck('kelas');

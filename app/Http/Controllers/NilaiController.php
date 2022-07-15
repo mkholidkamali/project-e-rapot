@@ -50,6 +50,7 @@ class NilaiController extends Controller
         
         // Get Siswa
         $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('nama')->get();
+        $nilais = [];
         foreach ($siswas as $siswa) {
             $nilais[] = Nilai::where([
                 ['mapel_id', $mapel->id],
@@ -57,7 +58,9 @@ class NilaiController extends Controller
                 ['siswa_id', $siswa->id],
             ])->get();
         }
-        array_shift($nilais);
+        if (!empty($nilais)) {
+            array_shift($nilais);
+        }
 
         // Get Data Nilai
         $dataNilai = [];
