@@ -58,7 +58,7 @@ class NilaiController extends Controller
                 ['siswa_id', $siswa->id],
             ])->get();
         }
-        if (!empty($nilais)) {
+        if (!$nilais) {
             array_shift($nilais);
         }
 

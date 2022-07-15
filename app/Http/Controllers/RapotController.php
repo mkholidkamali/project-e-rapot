@@ -44,7 +44,7 @@ class RapotController extends Controller
                 ['siswa_id', $siswa->id]
             ])->first();
         }
-        if (!empty($rapots)) {
+        if (!$rapots) {
             array_shift($rapots);
         }
 
