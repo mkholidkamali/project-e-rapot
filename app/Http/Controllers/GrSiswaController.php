@@ -28,7 +28,7 @@ class GrSiswaController extends Controller
 
         $kelas = [];
         $semester = [];
-        if (!empty($guru)) {
+        if (!$guru) {
             // KELAS
             $kelas = Kelas::where('guru_id', $guru->id)->get();
             // SEMESTER
@@ -60,13 +60,14 @@ class GrSiswaController extends Controller
     {
         // Get Siswa By Kelas
         $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('absen')->get();
+        $rapots = [];
         foreach ($siswas as $siswa) {
             $rapots[] = Nilai::where([
                 ['semester_id', $request->input('semester_id')],
                 ['siswa_id', $siswa->id]
             ])->first();
         }
-        array_shift($rapots);
+        // array_shift($rapots);
 
         // Selected Data
         $kelasData = Kelas::where('id', $request->input('kelas_id'))->pluck('kelas');

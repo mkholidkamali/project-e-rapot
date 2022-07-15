@@ -30,11 +30,16 @@ class GrMapelController extends Controller
         $mapels = [];
         $kelas = [];
         $semester = [];
-        if (!empty($guru)) {
+        if (!$guru) {
             // MAPEL
             $mapels = Mapel::where('guru_id', $guru->id)->get();
             // KELAS
-            $kelas = Kelas::where('guru_id', $guru->id)->get();
+            $kelasData = Kelas::where('guru_id', $guru->id)->first();
+            $kelasKata = explode(" ", $kelasData->kelas);
+            $kelas = Kelas::where([
+                ['kelas', 'like', "$kelasKata[0] Tel%"],
+                ['jurusan', $kelasData->jurusan]
+            ])->get();
             // SEMESTER
             $semester = Semester::all();
         }
@@ -89,7 +94,6 @@ class GrMapelController extends Controller
         // MAPEL
         $mapels = Mapel::where('guru_id', $guru->id)->get();
         // KELAS
-        // Where : kelas, jurusan
         $kelasData = Kelas::where('guru_id', $guru->id)->first();
         $kelasKata = explode(" ", $kelasData->kelas);
         $kelas = Kelas::where([
@@ -140,7 +144,7 @@ class GrMapelController extends Controller
                 ['siswa_id', $siswa->id]
             ])->first();
         }
-        array_shift($rapots);
+        // array_shift($rapots);
 
         // Selected Data
         $mapelData = Mapel::where('id', $mapel)->pluck('mapel');
