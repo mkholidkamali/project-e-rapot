@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody style="border: 1px solid rgb(169, 167, 167)" @error('no_induk') is-invalid @enderror>
-                        @foreach ($gurus as $guru)
+                        @forelse ($gurus as $guru)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $guru->no_induk }}</td>
@@ -56,7 +56,11 @@
                                 </form>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

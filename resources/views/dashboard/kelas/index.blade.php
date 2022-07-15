@@ -94,7 +94,7 @@
                                 </tr>
                             </thead>
                             <tbody style="border: 1px solid rgb(169, 167, 167)">
-                                @foreach ($kelas as $kls)
+                            @forelse ($kelas as $kls)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $kls->kelas }}</td>
@@ -109,7 +109,11 @@
                                         </form>
                                     </td>
                                 </tr>
-                                @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>

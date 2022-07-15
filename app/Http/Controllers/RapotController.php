@@ -146,7 +146,6 @@ class RapotController extends Controller
 
     public function exportpdf(){
 
-
         $data = Rapot::all();
         view()->share('data',$data);
         

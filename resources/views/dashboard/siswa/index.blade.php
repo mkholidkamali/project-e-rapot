@@ -41,30 +41,34 @@
                         </tr>
                     </thead>
                     <tbody style="border: 1px solid rgb(169, 167, 167)">
-                        @foreach ($siswa as $sis)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $sis->nis }}</td>
-                            <td>{{ $sis->nama }}</td>
-                            <td>{{ strtoupper($sis->kelas->jurusan) }}</td>
-                            <td>{{ $sis->kelas->kelas }}</td>
-                            <td>{{ $sis->jenis_kelamin="l" ? "Laki-laki" : "Perempuan" }}</td>
-                            <td>{{ strtoupper($sis->agama) }}</td>
-                            <td>{{ $sis->nisn }}</td>
-                            <td>
-                                <img src="{{ 'storage/' . $sis->foto  }}" class="" width="50vh"  alt="{{ $sis->foto }}">
-                            </td>
-                            <td class="text-center">
-                                <a class="btn btn-primary" href="{{ route('siswa.show', $sis->id) }}"><i class="bi bi-eye"></i></a>
-                                <a class="btn btn-warning" href="{{ route('siswa.edit', $sis->id) }}"><i class="bi bi-pencil-square"></i></a>
-                                <form action="{{ route('siswa.destroy', $sis->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus data siswa ini?')"><i class="bi bi-trash-fill"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
+                        @forelse ($siswa as $sis)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $sis->nis }}</td>
+                                <td>{{ $sis->nama }}</td>
+                                <td>{{ strtoupper($sis->kelas->jurusan) }}</td>
+                                <td>{{ $sis->kelas->kelas }}</td>
+                                <td>{{ $sis->jenis_kelamin="l" ? "Laki-laki" : "Perempuan" }}</td>
+                                <td>{{ strtoupper($sis->agama) }}</td>
+                                <td>{{ $sis->nisn }}</td>
+                                <td>
+                                    <img src="{{ 'storage/' . $sis->foto  }}" class="" width="50vh"  alt="{{ $sis->foto }}">
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary" href="{{ route('siswa.show', $sis->id) }}"><i class="bi bi-eye"></i></a>
+                                    <a class="btn btn-warning" href="{{ route('siswa.edit', $sis->id) }}"><i class="bi bi-pencil-square"></i></a>
+                                    <form action="{{ route('siswa.destroy', $sis->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus data siswa ini?')"><i class="bi bi-trash-fill"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="10" class="text-center"><b>Data tidak ada</b></td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

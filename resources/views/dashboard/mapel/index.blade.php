@@ -93,7 +93,7 @@
                                     </thead>
                                     <tbody style="border: 1px solid rgb(169, 167, 167)">
                                         <?php $no=1 ?>
-                                        @foreach ($mapels as $mapel)
+                                        @forelse ($mapels as $mapel)
                                             @if ($mapel['kelas'] == "x")
                                             <tr>
                                                 <td>{{ $no++ }}</td>
@@ -111,8 +111,12 @@
                                                 </td>
                                             </tr>
                                             @endif
-                                        @endforeach
-                                    </tbody>
+                                        @empty
+                                            <tr>
+                                                <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                                            </tr>
+                                        @endforelse
+                                        </tbody>
                                 </table>
                             </div>
                         </div>
@@ -137,7 +141,7 @@
                                     </thead>
                                     <tbody style="border: 1px solid rgb(169, 167, 167)">
                                         <?php $no=1 ?>
-                                        @foreach ($mapels as $mapel)
+                                        @forelse ($mapels as $mapel)
                                             @if ($mapel['kelas'] == "xi")
                                             <tr>
                                                 <td>{{ $no++ }}</td>
@@ -155,7 +159,11 @@
                                                 </td>
                                             </tr>
                                             @endif
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -181,7 +189,7 @@
                                     </thead>
                                     <tbody style="border: 1px solid rgb(169, 167, 167)">
                                         <?php $no=1 ?>
-                                        @foreach ($mapels as $mapel)
+                                        @forelse ($mapels as $mapel)
                                             @if ($mapel['kelas'] == "xii")
                                             <tr>
                                                 <td>{{ $no++ }}</td>
@@ -199,7 +207,11 @@
                                                 </td>
                                             </tr>
                                             @endif
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="7" class="text-center"><b>Data tidak ada</b></td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
