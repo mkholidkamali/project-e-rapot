@@ -89,7 +89,13 @@ class GrMapelController extends Controller
         // MAPEL
         $mapels = Mapel::where('guru_id', $guru->id)->get();
         // KELAS
-        $kelas = Kelas::where('guru_id', $guru->id)->get();
+        // Where : kelas, jurusan
+        $kelasData = Kelas::where('guru_id', $guru->id)->first();
+        $kelasKata = explode(" ", $kelasData->kelas);
+        $kelas = Kelas::where([
+            ['kelas', 'like', "$kelasKata[0] Tel%"],
+            ['jurusan', $kelasData->jurusan]
+        ])->get();
         // SEMESTER
         $semester = Semester::all();
 
