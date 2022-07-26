@@ -41,12 +41,10 @@ class NilaiController extends Controller
     public function select(Request $request)
     {
         // Get Mapel
-        $mapels = Mapel::where('id', $request->input('mapel_id'))->get();
-        $mapel = $mapels[0];
+        $mapel = Mapel::where('id', $request->input('mapel_id'))->first();
         
         // Get Semester
-        $semesters = Semester::where('id', $request->input('semester_id'))->get();
-        $semester = $semesters[0];
+        $semester = Semester::where('id', $request->input('semester_id'))->first();
         
         // Get Siswa
         $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('nama')->get();

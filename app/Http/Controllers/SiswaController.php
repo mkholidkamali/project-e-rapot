@@ -84,15 +84,14 @@ class SiswaController extends Controller
         $rapotGanjil = $rapotGanjil[0];
         $rapotGenap = $rapotGenap[0];
 
-        // Kelas id
-        $kelass = Kelas::find($siswa['kelas_id'])->get()->toArray();
-        $kelas = $kelass[0];
+        // Kelas id 
+        $kelas = Kelas::where('id', $siswa['kelas_id'])->first()->toArray();
         $kelasArray = explode(' ', trim($kelas['kelas']));
 
         // Mapel
         $mapels = Mapel::where([
-                ['jurusan', $kelas['jurusan']],
             ['kelas', $kelasArray[0]],
+            ['jurusan', $kelas['jurusan']],
         ])->get();
 
         // NILAI
@@ -187,15 +186,15 @@ class SiswaController extends Controller
         $foto = Nilai::where('siswa_id', $id)->first();
 
         // Delete Image
-        Storage::disk('public')->delete($foto->siswa->foto);
-
-        // Delete Nilai & Rapot
-        foreach ($nilais as $nilai) {
-            Rapot::destroy($nilai->rapot_id);
-            Nilai::destroy($nilai->id);
+        if ($foto) {
+            Storage::disk('public')->delete($foto->siswa->foto);
+            // Delete Nilai & Rapot
+            foreach ($nilais as $nilai) {
+                Rapot::destroy($nilai->rapot_id);
+                Nilai::destroy($nilai->id);
+            }
         }
         Siswa::destroy($id);
-        
         return back()->with('success', 'Berhasil menghapus data siswa');
     }
 }
