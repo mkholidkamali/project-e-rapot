@@ -57,13 +57,13 @@
             @endif
 
             <div class="d-flex justify-content-end mb-3">
-                <div class="d-flex align-items-center me-3">
-                    {{-- <a class="btn btn-success" href="{{ route('nilai.create') }}">Tambah Nilai</a> --}}
+                {{-- <div class="d-flex align-items-center me-3">
+                    <a class="btn btn-success" href="{{ route('nilai.create') }}">Tambah Nilai</a>
                 </div>
                 <form action="" method="POST">
                     <label for="search">Search</label>
                     <input type="text" name="search" class="form-control">
-                </form>
+                </form> --}}
             </div>
             <div class="text-center">
                 <b class="text-center ">{{ $selected }}</b>

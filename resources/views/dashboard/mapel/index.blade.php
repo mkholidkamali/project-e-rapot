@@ -73,12 +73,12 @@
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                            <div class="justify-content=end col-md-3 ms-auto">
+                            {{-- <div class="justify-content=end col-md-3 ms-auto">
                                 <form action="" method="POST">
                                     <label for="search">Search</label>
                                     <input type="text" name="search" class="form-control">
                                 </form>
-                            </div>
+                            </div> --}}
                             <div class="table-responsive mt-3">
                                 <table class="table table-hover table-striped">
                                     <thead>
@@ -121,12 +121,12 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                            <div class="justify-content=end col-md-3 ms-auto">
+                            {{-- <div class="justify-content=end col-md-3 ms-auto">
                                 <form action="" method="POST">
                                     <label for="search">Search</label>
                                     <input type="text" name="search" class="form-control">
                                 </form>
-                            </div>
+                            </div> --}}
                             <div class="table-responsive mt-3">
                                 <table class="table table-hover table-striped">
                                     <thead>
@@ -169,12 +169,12 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-                            <div class="justify-content=end col-md-3 ms-auto">
+                            {{-- <div class="justify-content=end col-md-3 ms-auto">
                                 <form action="" method="POST">
                                     <label for="search">Search</label>
                                     <input type="text" name="search" class="form-control">
                                 </form>
-                            </div>
+                            </div> --}}
                             <div class="table-responsive mt-3">
                                 <table class="table table-hover table-striped">
                                     <thead>

@@ -18,12 +18,12 @@
     <div class="card mt-2">
         <div class="card-body">
             <h5>Data Siswa</h5>
-            <div class="justify-content=end col-md-3 ms-auto">
+            {{-- <div class="justify-content=end col-md-3 ms-auto">
                 <form action="" method="POST">
                     <label for="search">Search</label>
                     <input type="text" name="search" class="form-control">
                 </form>
-            </div>
+            </div> --}}
             <div class="table-responsive mt-4" >
                 <table class="table table-hover table-striped" >
                     <thead>

@@ -76,12 +76,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <div class="justify-content=end col-md-3 ms-auto">
+                    {{-- <div class="justify-content=end col-md-3 ms-auto">
                         <form action="" method="POST">
                             <label for="search">Search</label>
                             <input type="text" name="search" class="form-control">
                         </form>
-                    </div>
+                    </div> --}}
                     <div class="table-responsive mt-3">
                         <table class="table table-hover table-striped">
                             <thead class="bg-danger text-white table-borderless" style="border: 1px solid #DC3545">

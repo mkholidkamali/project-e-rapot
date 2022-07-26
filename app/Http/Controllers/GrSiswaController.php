@@ -28,7 +28,7 @@ class GrSiswaController extends Controller
 
         $kelas = [];
         $semester = [];
-        if (!$guru) {
+        if ($guru) {
             // KELAS
             $kelas = Kelas::where('guru_id', $guru->id)->get();
             // SEMESTER
@@ -36,7 +36,7 @@ class GrSiswaController extends Controller
         }
 
         // Return if Walas
-        if (!empty($kelas)) {
+        if ($kelas) {
             return view('guru.siswa.index', [
                 'kelas' => $kelas,
                 'semester' => $semester,
