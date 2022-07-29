@@ -10,6 +10,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\RapotController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\ExportController;
 use App\Models\Rapot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -78,7 +79,9 @@ Route::middleware('admin')->group(function() {
     Route::get('/rapot/{id}/show', [RapotController::class, 'show'])->name('rapot.show');
     
     //CETAK PDF
-    Route::get('/exportpdf', [RapotController::class, 'exportpdf'])->name('exportpdf');
+    Route::get('/datapdf', [RapotController::class, 'exportpdf'])->name('exportpdf');
+    
+
 });
 
 

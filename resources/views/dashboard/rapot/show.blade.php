@@ -1,7 +1,7 @@
 
-@extends('layouts.dashboard.main')
+@extends('layouts.dashboard.second')
 
-@section('main')
+@section('second')
 
     <style>
         .table-rapot tbody tr td {
@@ -11,7 +11,8 @@
 
     {{-- <h1 class="mt-3">Laporan Nilai Siswa</h1> --}}
     {{-- <hr> --}}
-    <a class="btn btn-primary mb-2 px-3 mt-3" href="javascript:window.open('','_self').close();">Back</a>
+
+
 
     <div class="card">
         <div class="card-body">

@@ -91,7 +91,6 @@
                     </tbody>
                 </table>
             </div>
-            <a class="btn btn-primary " href="/exportpdf">Cetak Data</a>
         </div>
     </div>
 

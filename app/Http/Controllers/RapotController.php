@@ -143,13 +143,5 @@ class RapotController extends Controller
         //
     }
 
-    public function exportpdf(){
-
-        $data = Rapot::all();
-        view()->share('data',$data);
-        
-        $pdf = PDF::loadview('dashboard.rapot.datapdf');
-
-        return $pdf->download('raport.pdf');
-    }
+    
 }
