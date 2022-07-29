@@ -38,14 +38,12 @@ class RapotController extends Controller
     {
         // Get Siswa By Kelas
         $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('nama')->get();
+        $rapots = [];
         foreach ($siswas as $siswa) {
             $rapots[] = Nilai::where([
                 ['semester_id', $request->input('semester_id')],
                 ['siswa_id', $siswa->id]
             ])->first();
-        }
-        if (!$rapots) {
-            array_shift($rapots);
         }
 
         // Selected Data

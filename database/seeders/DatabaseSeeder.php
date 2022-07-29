@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::factory()->create([
             'name' => 'Admin Telkom',
-            'email' => 'admin@telkom.com',
+            'email' => 'admin@smktelkom-jkt.sch.id',
             'password' => bcrypt('12345678'),
             'is_admin' => true
         ]);

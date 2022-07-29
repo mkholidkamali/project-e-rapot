@@ -53,9 +53,10 @@ class GuruController extends Controller
         Guru::create($dataGuru);
 
         // Create Guru Account
+        $namaGuru = str_replace(' ', '', $dataGuru['name']);
         $accountGuru = [
             'name' => $dataGuru['name'],
-            'email' => $dataGuru['no_induk'] . "@telkom.com",
+            'email' => $dataGuru['name'] . "@smktelkom-jkt.sch.id",
             'password' => bcrypt($dataGuru['no_induk']),
             'is_admin' => false,
         ];
