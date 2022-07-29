@@ -22,10 +22,11 @@ class GrMapelController extends Controller
     public function index()
     {
         // Get Guru
-        $pattern = "[\d+]";
+        // $pattern = "[\d+]";
+        // preg_match($pattern, $string, $noInduk) ;
         $string = Auth::user()->email;
-        preg_match($pattern, $string, $noInduk) ;
-        $guru = Guru::where('no_induk', $noInduk)->first();
+        $name = explode('@', $string);
+        $guru = Guru::where('name', $name)->first();
 
         $mapels = [];
         $kelas = [];
@@ -46,7 +47,7 @@ class GrMapelController extends Controller
         
 
         // Return Mapel Option
-        if ($mapels) {
+        if ($mapels->count()) {
             return view('guru.mapel.index', [
                 'mapels' => $mapels,
                 'kelas' => $kelas,

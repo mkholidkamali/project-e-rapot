@@ -21,10 +21,11 @@ class GrSiswaController extends Controller
     public function index(Request $request)
     {
         // GURU
-        $pattern = "[\d+]";
+        // $pattern = "[\d+]";
+        // preg_match($pattern, $string, $name) ;
         $string = Auth::user()->email;
-        preg_match($pattern, $string, $noInduk) ;
-        $guru = Guru::where('no_induk', $noInduk)->first();
+        $name = explode('@', $string);
+        $guru = Guru::where('name', $name[0])->first();
 
         $kelas = [];
         $semester = [];
@@ -36,7 +37,7 @@ class GrSiswaController extends Controller
         }
 
         // Return if Walas
-        if ($kelas) {
+        if ($kelas->count()) {
             return view('guru.siswa.index', [
                 'kelas' => $kelas,
                 'semester' => $semester,

@@ -43,7 +43,7 @@ class GuruController extends Controller
         // Validate Input
         $dataGuru = $request->validate([
             'no_induk' => ['required', 'unique:gurus'],
-            'name' => ['required'],
+            'name' => ['required', 'unique:gurus,name'],
             'jenis_kelamin' => ['required'],
             'foto' => ['required', 'mimes:jpg, jpeg']
         ]);
