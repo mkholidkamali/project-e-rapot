@@ -22,11 +22,9 @@ class GrMapelController extends Controller
     public function index()
     {
         // Get Guru
-        // $pattern = "[\d+]";
-        // preg_match($pattern, $string, $noInduk) ;
         $string = Auth::user()->email;
         $name = explode('@', $string);
-        $guru = Guru::where('name', $name)->first();
+        $guru = Guru::where('name', $name[0])->first();
 
         $mapels = [];
         $kelas = [];
@@ -36,18 +34,20 @@ class GrMapelController extends Controller
             $mapels = Mapel::where('guru_id', $guru->id)->get();
             // KELAS
             $kelasData = Kelas::where('guru_id', $guru->id)->first();
-            $kelasKata = explode(" ", $kelasData->kelas);
-            $kelas = Kelas::where([
-                ['kelas', 'like', "$kelasKata[0] Tel%"],
-                ['jurusan', $kelasData->jurusan]
-            ])->get();
+            if ($kelasData) {
+                $kelasKata = explode(" ", $kelasData->kelas);
+                $kelas = Kelas::where([
+                    ['kelas', 'like', "$kelasKata[0] Tel%"],
+                    ['jurusan', $kelasData->jurusan]
+                ])->get();
+            }
             // SEMESTER
             $semester = Semester::all();
         }
         
 
         // Return Mapel Option
-        if ($mapels->count()) {
+        if ($mapels->count() && $kelasData) {
             return view('guru.mapel.index', [
                 'mapels' => $mapels,
                 'kelas' => $kelas,
@@ -73,6 +73,7 @@ class GrMapelController extends Controller
     {
         // Get Siswa By Kelas
         $siswas = Siswa::where('kelas_id', $request->input('kelas_id'))->orderBy('absen')->get();
+        $rapots = [];
         foreach ($siswas as $siswa) {
             $rapots[] = Nilai::where([
                 ['mapel_id',  $request->input('mapel_id')],
@@ -88,10 +89,9 @@ class GrMapelController extends Controller
         $selected = $mapelData[0] . ' - ' . $kelasData[0] . " - " . ucfirst($semester[0]);
         
         // GURU
-        $pattern = "[\d+]";
         $string = Auth::user()->email;
-        preg_match($pattern, $string, $noInduk) ;
-        $guru = Guru::where('no_induk', $noInduk)->first();
+        $name = explode('@', $string);
+        $guru = Guru::where('name', $name[0])->first();
         // MAPEL
         $mapels = Mapel::where('guru_id', $guru->id)->get();
         // KELAS

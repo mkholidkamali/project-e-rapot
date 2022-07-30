@@ -68,22 +68,19 @@ class GrSiswaController extends Controller
                 ['siswa_id', $siswa->id]
             ])->first();
         }
-        // array_shift($rapots);
 
         // Selected Data
         $kelasData = Kelas::where('id', $request->input('kelas_id'))->pluck('kelas');
         $semester = Semester::where('id', $request->input('semester_id'))->pluck('semester');
         $selected = $kelasData[0] . " - " . ucfirst($semester[0]);
         
-        // Get No_induk from Email
-        $pattern = "[\d+]";
+        // Get Name from Email
         $string = Auth::user()->email;
-        preg_match($pattern, $string, $noInduk) ;
-        // Get Id from Guru where no_induk
-        $guru = Guru::where('no_induk', $noInduk)->first();
+        $name = explode('@', $string);
+        $guru = Guru::where('name', $name[0])->first();
+        
         // Get Kelas from Guru_id
         $kelas = Kelas::where('guru_id', $guru->id)->get();
-
         $semester = Semester::all();
         return view('guru.siswa.index', [
             'kelas' => $kelas,

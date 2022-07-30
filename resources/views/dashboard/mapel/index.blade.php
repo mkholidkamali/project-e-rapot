@@ -18,44 +18,47 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    
-                    <form action="{{ route('mapel.store') }}" method="post" class="mt-2 px-2">
-                        @csrf
-                        <div class="mb-2">
-                            <label for="mapel" class="form-label">Mata Pelajaran</label>
-                            <input type="text" name="mapel" id="mapel" class="form-control @error('mapel') is-invalid @enderror " value="{{ old('mapel') }}">
-                            @error('mapel')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-2">
-                            <label for="kelas" class="form-label">Kelas</label>
-                            <select class="form-select @error('kelas') is-invalid @enderror" aria-label="Default select example" name="kelas" id="kelas">
-                                <option value="x">X</option>
-                                <option value="xi">XI</option>
-                                <option value="xii">XII</option>
-                            </select>
-                        </div>
-                        <div class="mb-2">
-                            <label for="jurusan" class="form-label">Jurusan</label>
-                            <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
-                                <option value="tra">TRA</option>
-                                <option value="tja">TJA</option>
-                                <option value="tkj">TKJ</option>
-                                <option value="rpl">RPL</option>
-                            </select>
-                        </div>
-                        <div class="mb-2">
-                            <label for="guru_id" class="form-label">Guru Pengajar</label>
-                            <select class="form-select @error('guru_id') is-invalid @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
-                                @foreach ($gurus as $guru)
-                                    <option value="{{ $guru->id }}">{{ $guru->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-dark mt-2">Tambah Kelas</button>
-                    </form>
-
+                    @if($gurus->count())
+                        <form action="{{ route('mapel.store') }}" method="post" class="mt-2 px-2">
+                            @csrf
+                            <div class="mb-2">
+                                <label for="mapel" class="form-label">Mata Pelajaran</label>
+                                <input type="text" name="mapel" id="mapel" class="form-control @error('mapel') is-invalid @enderror " value="{{ old('mapel') }}">
+                                @error('mapel')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="kelas" class="form-label">Kelas</label>
+                                <select class="form-select @error('kelas') is-invalid @enderror" aria-label="Default select example" name="kelas" id="kelas">
+                                    <option value="x">X</option>
+                                    <option value="xi">XI</option>
+                                    <option value="xii">XII</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="jurusan" class="form-label">Jurusan</label>
+                                <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example" name="jurusan" id="jurusan">
+                                    <option value="tra">TRA</option>
+                                    <option value="tja">TJA</option>
+                                    <option value="tkj">TKJ</option>
+                                    <option value="rpl">RPL</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="guru_id" class="form-label">Guru Pengajar</label>
+                                <select class="form-select @error('guru_id') is-invalid @enderror" aria-label="Default select example" name="guru_id" id="guru_id">
+                                    @foreach ($gurus as $guru)
+                                        <option value="{{ $guru->id }}">{{ $guru->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark mt-2">Tambah Kelas</button>
+                        </form>
+                    @else
+                        <h5>Data tidak lengkap</h5>
+                        <small>Pastikan data berikut tersedia : Guru</small>
+                    @endif
                 </div>
             </div>
         </div>
