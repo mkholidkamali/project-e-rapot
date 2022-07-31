@@ -9,9 +9,8 @@
         }
     </style>
 
-    {{-- <h1 class="mt-3">Laporan Nilai Siswa</h1> --}}
-    {{-- <hr> --}}
     <a class="btn btn-primary mb-2 px-3 mt-3" href="javascript:window.open('','_self').close();">Back</a>
+    <a class="btn btn-danger mb-2 px-3 mt-3" href="{{ route('rapot.print', 1) }}">Cetak Data</a>
 
     <div class="card">
         <div class="card-body">
@@ -131,16 +130,3 @@
     </div>
 
     @endsection
-    {{-- <div class="row px-1">
-        <div class="col-md-12 py-2">a</div>
-        <hr>
-        <div class="col-md-12">b</div>
-    </div> --}}
-    {{-- <table>
-        <tr>
-            <td>Pendidikan Agama Islam</td>
-        </tr>
-        <tr>
-            <td>Pendidikan Agama Islam</td>
-        </tr>
-    </table> --}}

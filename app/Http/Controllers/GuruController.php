@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Kelas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -151,6 +152,7 @@ class GuruController extends Controller
 
         // Delete Guru
         Guru::destroy($guru->id);
+        Kelas::where('guru_id', $guru->id)->delete();
 
         return redirect(route('guru.index'))->with('success', 'Berhasil menghapus Guru');
     }

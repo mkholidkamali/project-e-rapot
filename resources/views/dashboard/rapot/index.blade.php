@@ -4,7 +4,7 @@
 @section('main')
 
     <div class="d-flex ">
-        <h1 class="mt-3 align-items-center">Nilai</h1>
+        <h1 class="mt-3 align-items-center">Rapot</h1>
         @if (session('success'))
             <div class="alert alert-success my-auto ms-3 py-2 mt-4" role="alert">
                 {!! session('success') !!}
@@ -91,7 +91,6 @@
                     </tbody>
                 </table>
             </div>
-            <a class="btn btn-primary " href="/exportpdf">Cetak Data</a>
         </div>
     </div>
 
