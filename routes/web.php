@@ -5,12 +5,15 @@ use App\Http\Controllers\GrDashboardController;
 use App\Http\Controllers\GrMapelController;
 use App\Http\Controllers\GrSiswaController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\RapotController;
 use App\Http\Controllers\SiswaController;
 use App\Models\Rapot;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // ADMIN ROLE
 Route::middleware('admin')->group(function() {
@@ -76,8 +79,6 @@ Route::middleware('admin')->group(function() {
     Route::get('/rapot', [RapotController::class, 'index'])->name('rapot.index');
     Route::post('/rapot', [RapotController::class, 'select'])->name('rapot.select');
     Route::get('/rapot/{id}/show', [RapotController::class, 'show'])->name('rapot.show');
-    
-    //CETAK PDF
     Route::get('/rapot/{id}/print', [RapotController::class, 'printPdf'])->name('rapot.print');
 });
 

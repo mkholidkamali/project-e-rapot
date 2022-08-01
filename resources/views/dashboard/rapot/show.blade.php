@@ -10,7 +10,7 @@
     </style>
 
     <a class="btn btn-primary mb-2 px-3 mt-3" href="javascript:window.open('','_self').close();">Back</a>
-    <a class="btn btn-danger mb-2 px-3 mt-3" href="{{ route('rapot.print', 1) }}">Cetak Data</a>
+    <a class="btn btn-danger mb-2 px-3 mt-3" href="{{ route('rapot.print', $id) }}">Cetak Data</a>
 
     <div class="card">
         <div class="card-body">
@@ -19,8 +19,8 @@
                 <b class="fs-4"><u>LAPORAN NILAI SISWA</u></b>
             </div>
 
-            <div class="row d-flex justify-content-between">
-                <div class="col-md-6 ms-5">
+            <div class="row d-flex justify-content-between container mx-auto">
+                <div class="col-md-6">
                     <table class="table table-borderless">
                         <tr>
                             <td>Nama Sekolah</td>
@@ -44,7 +44,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-3" style="margin-right: 20vh">
+                <div class="col-md-4">
                     <table class="table table-borderless">
                         <tr>
                             <td>Kelas</td>

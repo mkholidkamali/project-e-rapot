@@ -8,7 +8,7 @@ use App\Models\Rapot;
 use App\Models\Semester;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RapotController extends Controller
 {
@@ -103,6 +103,7 @@ class RapotController extends Controller
         ])->get();
 
         return view('dashboard.rapot.show', [
+            'id' => $id,
             'siswa' => $siswa,
             'nilaiData' => $nilaiData,
             'nilais' => $nilais,
@@ -143,8 +144,31 @@ class RapotController extends Controller
         //
     }
 
-    public function printPdf()
+    public function printPdf($id)
     {
-        
+        // Get Siswa Data
+        $nilaiData = Nilai::where('id', $id)->first();
+        $siswa = Siswa::where('id', $nilaiData->siswa_id)->first();
+
+        // Get Nilai Data
+        $nilais = Nilai::where([
+            ['siswa_id', $siswa->id],
+            ['semester_id', $nilaiData->semester_id],
+        ])->get();
+
+        // PDF Setting
+        $pdf = Pdf::loadView('dashboard.rapot.print', [
+            'siswa' => $siswa,
+            'nilaiData' => $nilaiData,
+            'nilais' => $nilais,
+        ])->setPaper('A4');
+
+        return $pdf->stream('example.pdf');
+
+        return view('dashboard.rapot.print', [
+            'siswa' => $siswa,
+            'nilaiData' => $nilaiData,
+            'nilais' => $nilais,
+        ]);
     }
 }
