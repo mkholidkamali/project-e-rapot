@@ -92,6 +92,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/guru/nilai-siswa', [GrSiswaController::class, 'index'])->name('gr.siswa.index');
     Route::post('/guru/nilai-siswa', [GrSiswaController::class, 'select'])->name('gr.siswa.select');
     Route::get('/guru/nilai-siswa/{id}/rapot', [GrSiswaController::class, 'show'])->name('gr.siswa.show');
+    Route::get('/guru/nilai-siswa/{id}/print', [GrSiswaController::class, 'printPdf'])->name('gr.siswa.print');
 
     // INPUT NILAI
     Route::get('/guru/mapel', [GrMapelController::class, 'index'])->name('gr.mapel.index');

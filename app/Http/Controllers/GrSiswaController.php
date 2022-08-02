@@ -8,6 +8,7 @@ use App\Models\Nilai;
 use App\Models\Semester;
 use App\Models\Siswa;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -110,6 +111,35 @@ class GrSiswaController extends Controller
         ])->get();
 
         return view('guru.siswa.show', [
+            'id' => $id,
+            'siswa' => $siswa,
+            'nilaiData' => $nilaiData,
+            'nilais' => $nilais,
+        ]);
+    }
+
+    public function printPdf($id)
+    {
+        // Get Siswa Data
+        $nilaiData = Nilai::where('id', $id)->first();
+        $siswa = Siswa::where('id', $nilaiData->siswa_id)->first();
+
+        // Get Nilai Data
+        $nilais = Nilai::where([
+            ['siswa_id', $siswa->id],
+            ['semester_id', $nilaiData->semester_id],
+        ])->get();
+
+        // PDF Setting
+        $pdf = Pdf::loadView('dashboard.rapot.print', [
+            'siswa' => $siswa,
+            'nilaiData' => $nilaiData,
+            'nilais' => $nilais,
+        ])->setPaper('A4');
+
+        return $pdf->stream('example.pdf');
+
+        return view('dashboard.rapot.print', [
             'siswa' => $siswa,
             'nilaiData' => $nilaiData,
             'nilais' => $nilais,

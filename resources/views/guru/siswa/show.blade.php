@@ -9,9 +9,8 @@
         }
     </style>
 
-    {{-- <h1 class="mt-3">Laporan Nilai Siswa</h1> --}}
-    {{-- <hr> --}}
     <a class="btn btn-primary mb-2 px-3 mt-3" href="javascript:window.open('','_self').close();">Back</a>
+    <a class="btn btn-danger mb-2 px-3 mt-3" href="{{ route('gr.siswa.print', $id) }}">Cetak Data</a>
 
     <div class="card">
         <div class="card-body">
